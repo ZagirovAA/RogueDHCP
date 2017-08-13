@@ -1,0 +1,31 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.8.4
+Title=Rogue DHCP
+Startup=MCommon
+Icon=icons/96.png
+Version=0.1.64
+Component=gb.image
+Component=gb.gui.qt
+Component=gb.form
+Component=gb.desktop.x11
+Component=gb.desktop
+Component=gb.settings
+Component=gb.gui.qt.webkit
+Library=/home/abdul/cloud/projects/gambas/roguedhcp/libnetcon.gambas
+Description="Rogue DHCP sniffer"
+Authors="Zagirov Abdul Askerovich"
+TabSize=3
+Translate=1
+Language=en_US
+ControlPublic=1
+Warnings=0
+SourcePath=/home/abdul/downloads
+Maintainer=Загиров Абдул Аскерович
+Address=zagirovaa@bk.ru
+License=General Public License
+PackageName=roguedhcp-0.1.58
+Packager=1
+Systems=ubuntu
+Menus=ubuntu:"Applications/System/Administration"
+Categories=ubuntu:"System"
+Groups=ubuntu:"admin"

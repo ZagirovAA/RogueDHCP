@@ -1,0 +1,63 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,735,441)
+  #Scaled = False
+  Text = ("Help system")
+  Icon = Picture["icons/24.png"]
+  Maximized = True
+  { pnlWeb Panel
+    Move(7,7,721,427)
+    Border = Border.Plain
+    { wwwHelp WebView
+      Move(7,42,707,378)
+      Url = "www.google.com"
+    }
+    { pnlButtons Panel
+      Move(7,6,154,28)
+      { tlbRefresh ToolButton
+        Move(126,0,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Refresh - F5")
+        Picture = Picture["icon:/16/refresh"]
+      }
+      { Separator2 Separator
+        Move(105,0,21,28)
+      }
+      { tlbHome ToolButton
+        Move(77,0,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Home - Home")
+        Picture = Picture["icon:/16/home"]
+      }
+      { Separator1 Separator
+        Move(56,0,21,28)
+      }
+      { tlbForward ToolButton
+        Move(28,0,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Forward - Right")
+        Picture = Picture["icon:/16/last"]
+      }
+      { tlbBackward ToolButton
+        Move(0,0,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Backward - Left")
+        Picture = Picture["icon:/16/first"]
+      }
+    }
+    { pnlUrl Panel
+      Move(175,6,539,28)
+      Background = Color.White
+      { txbUrl TextBox
+        Move(7,0,497,28)
+        Background = Color.White
+        ReadOnly = True
+        Border = False
+      }
+      { spnStatus Spinner
+        Move(511,2,24,24)
+      }
+    }
+  }
+}

@@ -1,0 +1,355 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,931,532)
+  #Scaled = False
+  Text = ("Rogue DHCP sniffer")
+  Icon = Picture["icons/24.png"]
+  Maximized = True
+  { mnuFile Menu
+    Text = ("File")
+    { mnuFileExit Menu
+      Text = ("Exit")
+      Shortcut = "Ctrl+X"
+    }
+  }
+  { mnuSniffer Menu
+    Text = ("Sniffer")
+    { mnuSnifferAction Menu
+      Text = ("Start")
+      Shortcut = "Ctrl+S"
+    }
+  }
+  { mnuServer Menu
+    Text = ("Server")
+    { mnuServerAdd Menu
+      Text = ("Add")
+      Shortcut = "Ctrl+A"
+    }
+    { mnuServerEdit Menu
+      Text = ("Edit")
+      Shortcut = "Ctrl+E"
+    }
+    { mnuServerDelete Menu
+      Text = ("Delete")
+      Shortcut = "Ctrl+D"
+    }
+    { mnuServerSep1 Menu
+    }
+    { mnuServerEmpty Menu
+      Text = ("Clear")
+      Shortcut = "Ctrl+R"
+    }
+    { mnuServerSep2 Menu
+    }
+    { mnuServerFill Menu
+      Text = ("Fill")
+      Shortcut = "Ctrl+F"
+    }
+  }
+  { mnuLog Menu
+    Text = ("Log")
+    { mnuLogClear Menu
+      Text = ("Clear")
+      Shortcut = "Ctrl+C"
+    }
+    { mnuLogSep Menu
+    }
+    { mnuLogCopyIP Menu
+      Text = ("Copy IP address")
+      Shortcut = "Ctrl+I"
+    }
+    { mnuLogCopyMAC Menu
+      Text = ("Copy MAC address")
+      Shortcut = "Ctrl+M"
+    }
+  }
+  { mnuSettings Menu
+    Text = ("Settings")
+    { mnuSettingsAutostart Menu
+      Text = ("Autostart")
+      Toggle = True
+      Shortcut = "Ctrl+O"
+    }
+    { mnuSettingsSep1 Menu
+    }
+    { mnuSettingsVlans Menu
+      Text = ("VLAN mode")
+      Toggle = True
+      Shortcut = "Ctrl+V"
+    }
+    { mnuSettingsSep2 Menu
+    }
+    { mnuSettingsInterval Menu
+      Text = ("Interval")
+      { mnuSetInt1 Menu Interval
+        Name = "mnuSetInt1"
+        Text = ("1 minute")
+        Radio = True
+        Tag = "1"
+        Shortcut = "Ctrl+1"
+      }
+      { mnuSetInt2 Menu Interval
+        Name = "mnuSetInt2"
+        Text = ("2 minutes")
+        Radio = True
+        Tag = "2"
+        Shortcut = "Ctrl+2"
+      }
+      { mnuSetInt3 Menu Interval
+        Name = "mnuSetInt3"
+        Text = ("3 minutes")
+        Radio = True
+        Tag = "3"
+        Shortcut = "Ctrl+3"
+      }
+      { mnuSetInt4 Menu Interval
+        Name = "mnuSetInt4"
+        Text = ("4 minutes")
+        Radio = True
+        Tag = "4"
+        Shortcut = "Ctrl+4"
+      }
+      { mnuSetInt5 Menu Interval
+        Name = "mnuSetInt5"
+        Text = ("5 minutes")
+        Radio = True
+        Tag = "5"
+        Shortcut = "Ctrl+5"
+      }
+      { mnuSetInt6 Menu Interval
+        Name = "mnuSetInt6"
+        Text = ("6 minutes")
+        Radio = True
+        Tag = "6"
+        Shortcut = "Ctrl+6"
+      }
+      { mnuSetInt7 Menu Interval
+        Name = "mnuSetInt7"
+        Text = ("7 minutes")
+        Radio = True
+        Tag = "7"
+        Shortcut = "Ctrl+7"
+      }
+      { mnuSetInt8 Menu Interval
+        Name = "mnuSetInt8"
+        Text = ("8 minutes")
+        Radio = True
+        Tag = "8"
+        Shortcut = "Ctrl+8"
+      }
+      { mnuSetInt9 Menu Interval
+        Name = "mnuSetInt9"
+        Text = ("9 minutes")
+        Radio = True
+        Tag = "9"
+        Shortcut = "Ctrl+9"
+      }
+      { mnuSetInt10 Menu Interval
+        Name = "mnuSetInt10"
+        Text = ("10 minutes")
+        Radio = True
+        Tag = "10"
+        Shortcut = "Ctrl+0"
+      }
+    }
+    { mnuSettingsSep3 Menu
+    }
+    { mnuSettingsAreas Menu
+      Text = ("Areas database")
+      Shortcut = "Ctrl+B"
+    }
+  }
+  { mnuHelp Menu
+    Text = ("Help")
+    { mnuHelpAbout Menu
+      Text = ("About")
+      Shortcut = "Shift+F1"
+    }
+    { mnuHelpSep Menu
+    }
+    { mnuHelpFull Menu
+      Text = ("Help")
+      Shortcut = "F1"
+    }
+  }
+  { mnuCLog Menu
+    Text = ("CLog")
+    Visible = False
+    { mnuCLogCopyIP Menu
+      Text = ("Copy IP address")
+    }
+    { mnuCLogCopyMAC Menu
+      Text = ("Copy MAC address")
+    }
+  }
+  { grvFields GridView
+    Move(630,84,294,140)
+    Header = GridView.Horizontal
+    ScrollBar = Scroll.None
+    Resizable = False
+  }
+  { grvLegalIP GridView
+    Move(7,252,280,245)
+    Mouse = Mouse.Pointing
+    Mode = Select.Single
+    Header = GridView.Horizontal
+    ScrollBar = Scroll.Vertical
+    AutoResize = False
+    Resizable = False
+  }
+  { grvLogs GridView
+    Move(294,252,630,245)
+    Mouse = Mouse.Pointing
+    PopupMenu = "mnuCLog"
+    Mode = Select.Single
+    Header = GridView.Horizontal
+    ScrollBar = Scroll.Vertical
+    AutoResize = False
+    Resizable = False
+  }
+  { lblServerIP Label
+    Move(7,84,616,140)
+    Font = Font["Bold,60"]
+    Alignment = Align.Center
+    Border = Border.Plain
+  }
+  { spnStatus Spinner
+    Move(273,105,91,98)
+    Visible = False
+  }
+  { tmrInterval #Timer
+    #Move(861,434)
+  }
+  { pnlToolbar Panel
+    Move(7,7,917,49)
+    { tlbSniff ToolButton
+      Move(7,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Sniffing")
+      Picture = Picture["images/disconnect.png"]
+    }
+    { Separator1 Separator
+      Move(42,6,21,36)
+    }
+    { tlbEmpty ToolButton
+      Move(259,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Clear log")
+      Picture = Picture["images/clear.png"]
+    }
+    { Separator2 Separator
+      Move(294,6,21,36)
+    }
+    { tlbAuto ToolButton
+      Move(315,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Sniffing autostart")
+      Picture = Picture["images/autostart.png"]
+      Toggle = True
+    }
+    { Separator5 Separator
+      Move(350,6,21,36)
+    }
+    { tlbVlan ToolButton
+      Move(371,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("VLAN mode")
+      Picture = Picture["images/vlans.png"]
+      Toggle = True
+    }
+    { tlbDelete ToolButton
+      Move(147,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Delete server")
+      Picture = Picture["images/delete.png"]
+    }
+    { tlbAdd ToolButton
+      Move(63,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Add server")
+      Picture = Picture["images/add.png"]
+    }
+    { tlbEdit ToolButton
+      Move(105,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Edit server")
+      Picture = Picture["images/edit.png"]
+    }
+    { Separator4 Separator
+      Move(406,6,21,36)
+    }
+    { slbInterval SliderBox
+      Move(427,10,280,28)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Interval without broadcasting")
+      MinValue = 1
+      MaxValue = 10
+      Value = 1
+    }
+    { Separator6 Separator
+      Move(707,6,21,36)
+    }
+    { tlbAbout ToolButton
+      Move(784,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("About")
+      Picture = Picture["images/about.png"]
+    }
+    { tlbExit ToolButton
+      Move(826,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Exit")
+      Picture = Picture["images/exit.png"]
+    }
+    { Separator7 Separator
+      Move(182,6,21,36)
+    }
+    { tlbClear ToolButton
+      Move(203,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Clear servers")
+      Picture = Picture["images/empty.png"]
+    }
+    { Separator8 Separator
+      Move(238,6,21,36)
+    }
+    { Separator9 Separator
+      Move(763,6,21,36)
+    }
+    { tlbAreas ToolButton
+      Move(728,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Areas database")
+      Picture = Picture["images/area.png"]
+    }
+  }
+  { lblFields Label
+    Move(630,63,294,21)
+    Background = Color.SelectedBackground
+    Foreground = Color.White
+    Text = ("Server data")
+    Alignment = Align.Center
+  }
+  { lblLegalsTable Label
+    Move(7,231,280,21)
+    Background = Color.SelectedBackground
+    Foreground = Color.White
+    Text = ("Legal servers")
+    Alignment = Align.Center
+  }
+  { lblLogTable Label
+    Move(294,231,630,21)
+    Background = Color.SelectedBackground
+    Foreground = Color.White
+    Text = ("Table of logs")
+    Alignment = Align.Center
+  }
+  { lblRogueIP Label
+    Move(7,63,616,21)
+    Background = Color.SelectedBackground
+    Foreground = Color.White
+    Text = ("Server address")
+    Alignment = Align.Center
+  }
+}

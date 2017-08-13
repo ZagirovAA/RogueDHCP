@@ -1,0 +1,19 @@
+' Gambas class file
+
+
+Public Sub btnCancel_Click()
+
+   Me.Close()
+
+End
+
+Public Sub Form_Open()
+
+   Me.Center()
+   mskMAC.Text = "FF:FF:FF:FF:FF:FF"
+   spnHost.Value = 1
+   vlbStartIP.Value = "192.168.0.0"
+   vlbEndIP.Value = "192.168.255.0"
+   spnMask.Value = 24
+
+End

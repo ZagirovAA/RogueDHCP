@@ -1,0 +1,80 @@
+' Gambas class file
+
+Public Sub btnCancel_Click()
+
+   Me.Close()
+
+End
+
+Public Sub btnGetMAC_Click()
+
+   Dim strMac As String
+
+   Inc Application.Busy
+   If vlbIPAddress.Value <> 0 Then
+      If CNetLib.IsIpAddress(Str(vlbIPAddress.Value)) Then
+         strMac = UCase(CNetLib.GetMacOfIp(Str(vlbIPAddress.Value)))
+         If CNetLib.IsMacAddress(strMac) Then
+            msbMACAddress.Text = strMac
+         Else
+            Message.Warning(("Could not get mac address"))
+         Endif
+      Endif
+   Endif
+   Dec Application.Busy
+
+End
+
+Public Sub Form_Open()
+
+   Me.Center()
+   With FMain
+      If .strCurrentIP <> "" And If .strCurrentMAC <> "" Then
+         vlbIPAddress.Text = .strCurrentIP
+         msbMACAddress.Text = .strCurrentMAC
+      Endif
+   End With
+
+End
+
+Public Sub btnAction_Click()
+
+   Dim strIP As String
+   Dim strMAC As String
+
+   strIP = Trim(Str(vlbIPAddress.Value))
+   strMAC = Trim(msbMACAddress.Text)
+
+   If strIP = "" Or If strMAC = "" Then
+      Message.Warning(("Fields need to be filled"))
+      Return
+   Endif
+   If Not CNetLib.IsIpAddress(strIP) Then
+      Message.Warning(("Incorrect IP address format"))
+      Return
+   Endif
+   If Not CNetLib.IsMacAddress(strMAC) Then
+      Message.Warning(("Incorrect MAC address format"))
+      Return
+   Endif
+   If MCommon.IsDuplicate(strIP, strMAC) Then
+      Message.Warning(("Identical record already exists"))
+      Return
+   Endif
+   With FMain
+      If btnAction.Text = ("Add") Then
+         Inc .grvLegalIP.Rows.Count
+         .grvLegalIP[.grvLegalIP.Rows.Max, 0].Text = UCase(strMAC)
+         .grvLegalIP[.grvLegalIP.Rows.Max, 1].Text = strIP
+      Else
+         .grvLegalIP[.grvLegalIP.Row, 0].Text = UCase(strMAC)
+         .grvLegalIP[.grvLegalIP.Row, 1].Text = strIP
+      Endif
+      MCommon.SaveLegal()
+      Me.Close()
+      .grvLegalIP.Rows[.grvLegalIP.Rows.Max].Selected = True
+      .grvLegalIP.Current.EnsureVisible()
+   End With
+   MCommon.ResizeLegal()
+
+End

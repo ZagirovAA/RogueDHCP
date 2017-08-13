@@ -1,0 +1,86 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,350,259)
+  #Scaled = False
+  Text = ("Fill servers list")
+  Icon = Picture["icons/24.png"]
+  Resizable = False
+  Utility = True
+  SkipTaskbar = True
+  { Panel1 Panel
+    Move(7,7,336,210)
+    Border = Border.Plain
+    { Label1 Label
+      Move(21,25,133,21)
+      Text = ("MAC address:")
+      Alignment = Align.Right
+    }
+    { Label2 Label
+      Move(21,60,133,21)
+      Text = ("Host number:")
+      Alignment = Align.Right
+    }
+    { Label3 Label
+      Move(21,95,133,21)
+      Text = ("Start subnet:")
+      Alignment = Align.Right
+    }
+    { Label4 Label
+      Move(21,130,133,21)
+      Text = ("End subnet:")
+      Alignment = Align.Right
+    }
+    { Label5 Label
+      Move(21,165,133,21)
+      Text = ("Subnet mask:")
+      Alignment = Align.Right
+    }
+    { mskMAC MaskBox
+      Move(168,21,147,28)
+      Mouse = Mouse.Pointing
+      Text = ("FF:FF:FF:FF:FF:FF")
+      Mask = "[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]"
+    }
+    { spnHost SpinBar
+      Move(169,56,146,28)
+      Mouse = Mouse.Pointing
+      Value = 1
+      MaxValue = 254
+      MinValue = 1
+      Step = 1
+    }
+    { vlbStartIP ValueBox
+      Move(168,91,147,28)
+      Mouse = Mouse.Pointing
+      Text = ("192.168.0.0")
+      Type = ValueBox.IPAddress
+    }
+    { vlbEndIP ValueBox
+      Move(168,126,147,28)
+      Mouse = Mouse.Pointing
+      Text = ("192.168.255.0")
+      Type = ValueBox.IPAddress
+    }
+    { spnMask SpinBar
+      Move(169,161,146,28)
+      Mouse = Mouse.Pointing
+      Value = 24
+      MaxValue = 32
+      MinValue = 1
+      Step = 1
+    }
+  }
+  { btnFill Button
+    Move(6,224,112,28)
+    Mouse = Mouse.Pointing
+    Text = ("Fill")
+    Picture = Picture["icon:/16/exec"]
+  }
+  { btnCancel Button
+    Move(231,224,112,28)
+    Mouse = Mouse.Pointing
+    Text = ("Cancel")
+    Picture = Picture["icon:/16/close"]
+  }
+}

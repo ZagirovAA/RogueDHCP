@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Справочная система : Возможности</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-9">
+          <h2 class="text-primary"><b>Справочная система</b></h2>
+          <h5>
+            Воспользуйтесь меню в левой части окна для перехода
+            в соответствующий раздел
+          </h5>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="list-group">
+            <a href="index.html" class="list-group-item">
+              <h4 class="list-group-item-heading">О программе</h4>
+              <p class="list-group-item-text">
+                Краткая информация о программе и ее авторе
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="features.html" class="list-group-item active">
+              <h4 class="list-group-item-heading">Возможности</h4>
+              <p class="list-group-item-text">
+                Список функциональных возможностей приложения
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="install.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Установка</h4>
+              <p class="list-group-item-text">
+                Полное описание процесса установки программы
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="start.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Первый запуск</h4>
+              <p class="list-group-item-text">
+                Упоминание о возможных проблемах при запуске
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="settings.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Настройка</h4>
+              <p class="list-group-item-text">
+                Подробная инструкция по настройке приложения
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-9">
+          <h4 class="text-primary"><b>Возможности</b></h4>
+          <h5>Список функциональных возможностей приложения</h5><br><hr>
+          <p>
+            <b>Rogue DHCP</b> - приложение, основной задачей которого является
+            обнаружение, в пределах широковещательного домена, посторонних
+            серверов DHCP.
+          </p>
+          <p>
+            Самой часто встречающейся причиной возникновения
+            ситуации с появлением в сети "левых" серверов является физическое
+            переключение кабеля, проложенного оператором связи до домашнего
+            wifi-роутера абонента, из порта WAN в один из свободных портов LAN.
+            Как следствие, сервер выдачи динамических адресов, запущенный на
+            домашнем роутере, начинает функционировать не только в рамках
+            домашней локальной сети, но и в сети оператора связи, что может
+            повлечь за собой прерывания связи у других абонентов этого оператора.
+          </p>
+          <p>
+            В основе приложения лежит инструмент, встроенный в подавляющее
+            большинство дистрибутивов Linux, под названием tcpdump. Используя
+            его осуществляется перехват предварительно отфильтрованных пакетов.
+            Далее выполняется их парсинг и, при определенных условия,
+            сохранение информации с последующим выводом на экран.
+          </p>
+          <p>На данный момент приложение поддерживает следующие возможности:</p>
+          <ol>
+            <li>
+              <dl>
+                <dt>Режим VLAN</dt>
+                <dd>
+                  Данная опция дает возможность работать приложению,
+                  как в среде с использованием VLAN, так и без них.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>Автозапуск</dt>
+                <dd>
+                  В случае активности данной настройки, процесс перехвата левых
+                  серверов запускается автоматически при старте приложения.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>Легальные сервера</dt>
+                <dd>
+                  В приложении есть возможность ведения базы легальных серверов.
+                  В случае перехвата пакетов от одного из них, уведомления не
+                  выводятся.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>Интервал вещяния</dt>
+                <dd>
+                  Если тот или иной перехваченный сервер не проявляет
+                  активности в течении заданного интервала, информация
+                  о нем обнуляется.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>Данные сервера</dt>
+                <dd>
+                  Присутствует отдельная таблица для вывода информации о текущем перехваченном сервере.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>Таблица логов</dt>
+                <dd>
+                  Любая активность со стороны левых серверов добавляется в
+                  таблицу логов и сохраняется в файле конфигурации.
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>База районов</dt>
+                <dd>
+                  В приложении есть функция ведения базы районов с привязкой
+                  одного или более VLAN к ним.
+                </dd>
+              </dl>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

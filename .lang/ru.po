@@ -1,0 +1,451 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: trunk 3.9.2\n"
+"PO-Revision-Date: 2017-02-13 08:13 UTC\n"
+"Last-Translator: Загиров Абдул Аскерович <zagirovaa@bk.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .project:1 FAbout.form:29
+msgid "Rogue DHCP"
+msgstr "-"
+
+#: .project:2 FMain.form:80
+msgid "Rogue DHCP sniffer"
+msgstr "Сниффер левых DHCP серверов"
+
+#: FAbout.form:12 FMain.form:277
+msgid "About"
+msgstr "О программе"
+
+#: FAbout.form:34
+msgid "Sniffer of non-leagal dhcp servers"
+msgstr "Сниффер нелегальных dhcp серверов"
+
+#: FAbout.form:39
+msgid "Zagirov Abdul Askerovich (С) 2015 - 2017"
+msgstr "Загиров Абдул Аскерович (С) 2015 - 2017"
+
+#: FAreas.class:8
+msgid "Areas"
+msgstr "Районы"
+
+#: FAreas.class:56
+msgid "Add area"
+msgstr "Добавить район"
+
+#: FAreas.class:56
+msgid "Enter area:"
+msgstr "Введите район:"
+
+#: FAreas.class:59
+msgid "You didn't enter name of the area"
+msgstr "Вы не ввели наименование района"
+
+#: FAreas.class:63
+msgid "Area already exists"
+msgstr "Район уже существует"
+
+#: FAreas.class:92
+msgid "Enter VLAN:"
+msgstr "Введите VLAN:"
+
+#: FAreas.class:95
+msgid "You didn't enter VLAN number"
+msgstr "Вы не ввели номер VLAN"
+
+#: FAreas.class:99
+msgid "Digital value needs to be entered"
+msgstr "Необходимо ввести числовое значение"
+
+#: FAreas.class:103
+msgid "VLAN already exists"
+msgstr "VLAN уже существует"
+
+#: FAreas.class:107
+msgid "VLAN number must be between 1 and 4094"
+msgstr "Номер VLAN должен быть между 1 и 4094"
+
+#: FAreas.class:134 FMain.class:328
+msgid "No"
+msgstr "Нет"
+
+#: FAreas.class:134
+msgid "Sure you want to delete all the data?"
+msgstr "Уверены, что хотите удалить все данные?"
+
+#: FAreas.class:134 FMain.class:328
+msgid "Yes"
+msgstr "Да"
+
+#: FAreas.class:151
+msgid "Edit area"
+msgstr "Изменить район"
+
+#: FAreas.class:154
+msgid "Name of the area was not changed"
+msgstr "Наименование района не изменилось"
+
+#: FAreas.form:23 FMain.form:268
+msgid "Areas database"
+msgstr "База районов"
+
+#: FAreas.form:47
+msgid "Areas:"
+msgstr "Районы:"
+
+#: FAreas.form:58
+msgid "Vlans:"
+msgstr "Вланы:"
+
+#: FAreas.form:64
+msgid "Add VLAN"
+msgstr "Добавить VLAN"
+
+#: FAreas.form:72
+msgid "Delete VLAN"
+msgstr "Удалить VLAN"
+
+#: FAreas.form:80
+msgid "Apply changes"
+msgstr "Применить изменения"
+
+#: FAreas.form:97 FMain.form:106 FServer.form:57
+msgid "Add"
+msgstr "Добавить"
+
+#: FAreas.form:105 FMain.form:111
+msgid "Edit"
+msgstr "Изменить"
+
+#: FAreas.form:113 FMain.form:116
+msgid "Delete"
+msgstr "Удалить"
+
+#: FAreas.form:121 FMain.form:124
+msgid "Clear"
+msgstr "Очистить"
+
+#: FAreas.form:128 FFill.form:109 FServer.form:64
+msgid "Cancel"
+msgstr "Отмена"
+
+#: FAreas.form:135
+msgid "Save"
+msgstr "Сохранить"
+
+#: FFill.form:20
+msgid "Fill servers list"
+msgstr "Заполнить список серверов"
+
+#: FFill.form:31 FServer.form:31
+msgid "MAC address:"
+msgstr "MAC адрес:"
+
+#: FFill.form:37
+msgid "Host number:"
+msgstr "Номер узла:"
+
+#: FFill.form:43
+msgid "Start subnet:"
+msgstr "Начальная подсеть:"
+
+#: FFill.form:49
+msgid "End subnet:"
+msgstr "Конечная подсеть:"
+
+#: FFill.form:55
+msgid "Subnet mask:"
+msgstr "Маска подсети:"
+
+#: FFill.form:62
+msgid "FF:FF:FF:FF:FF:FF"
+msgstr "-"
+
+#: FFill.form:78
+msgid "192.168.0.0"
+msgstr "-"
+
+#: FFill.form:85
+msgid "192.168.255.0"
+msgstr "-"
+
+#: FFill.form:102 FMain.form:132
+msgid "Fill"
+msgstr "Заполнить"
+
+#: FHelp.form:19
+msgid "Help system"
+msgstr "Справочная система"
+
+#: FHelp.form:39
+msgid "Refresh - F5"
+msgstr "Обновить - F5"
+
+#: FHelp.form:50
+msgid "Home - Home"
+msgstr "Домой - Home"
+
+#: FHelp.form:61
+msgid "Forward - Right"
+msgstr "Вперед - Right"
+
+#: FHelp.form:68
+msgid "Backward - Left"
+msgstr "Назад - Left"
+
+#: FMain.class:30
+msgid "Field"
+msgstr "Поле"
+
+#: FMain.class:31
+msgid "Value"
+msgstr "Значение"
+
+#: FMain.class:34
+msgid "MAC address"
+msgstr "MAC адрес"
+
+#: FMain.class:35
+msgid "Time"
+msgstr "Время"
+
+#: FMain.class:36
+msgid "Quantity"
+msgstr "Количество"
+
+#: FMain.class:38
+msgid "Area"
+msgstr "Район"
+
+#: FMain.class:46
+msgid "IP address"
+msgstr "IP адрес"
+
+#: FMain.class:81
+msgid "Stop"
+msgstr "Остановить"
+
+#: FMain.class:159
+msgid "Network must be functional for the application to work"
+msgstr "Для работы приложения сеть должна функционировать"
+
+#: FMain.class:163
+msgid "Tcpdump must be installed"
+msgstr "Tcpdump должен быть установлен"
+
+#: FMain.class:167
+msgid "Application must be launched under root account"
+msgstr "Приложение должно быть запущено под пользователем root"
+
+#: FMain.class:328
+msgid "Sure you want to delete log table?"
+msgstr "Уверены, что хотите удалить таблицу логов?"
+
+#: FMain.class:387
+msgid "Sure you want to delete all the leagal servers?"
+msgstr "Уверены, что хотите удалить все легальные сервера?"
+
+#: FMain.class:428
+msgid "IP address was successfully put into clipboard"
+msgstr "IP адрес был успешно помещен в буфер обмена"
+
+#: FMain.class:437
+msgid "MAC address was successfully put into clipboard"
+msgstr "MAC адрес был успешно помещен в буфер обмена"
+
+#: FMain.class:448
+msgid "Help file was not found"
+msgstr "Файл справки не обнаружен"
+
+#: FMain.form:85
+msgid "File"
+msgstr "Файл"
+
+#: FMain.form:88
+msgid "Exit"
+msgstr "Выход"
+
+#: FMain.form:94
+msgid "Sniffer"
+msgstr "Сниффер"
+
+#: FMain.form:97
+msgid "Start"
+msgstr "Запуск"
+
+#: FMain.form:103
+msgid "Server"
+msgstr "Сервер"
+
+#: FMain.form:138
+msgid "Log"
+msgstr "Лог"
+
+#: FMain.form:149
+msgid "Copy IP address"
+msgstr "Копировать IP адрес"
+
+#: FMain.form:154
+msgid "Copy MAC address"
+msgstr "Копировать MAC адрес"
+
+#: FMain.form:160
+msgid "Settings"
+msgstr "Настройки"
+
+#: FMain.form:163
+msgid "Autostart"
+msgstr "Автозапуск"
+
+#: FMain.form:172
+msgid "VLAN mode"
+msgstr "Режим VLAN"
+
+#: FMain.form:181
+msgid "Interval"
+msgstr "Интервал"
+
+#: FMain.form:185
+msgid "1 minute"
+msgstr "1 минута"
+
+#: FMain.form:193
+msgid "2 minutes"
+msgstr "2 минуты"
+
+#: FMain.form:201
+msgid "3 minutes"
+msgstr "3 минуты"
+
+#: FMain.form:209
+msgid "4 minutes"
+msgstr "4 минуты"
+
+#: FMain.form:217
+msgid "5 minutes"
+msgstr "5 минут"
+
+#: FMain.form:225
+msgid "6 minutes"
+msgstr "6 минут"
+
+#: FMain.form:233
+msgid "7 minutes"
+msgstr "7 минут"
+
+#: FMain.form:241
+msgid "8 minutes"
+msgstr "8 минут"
+
+#: FMain.form:249
+msgid "9 minutes"
+msgstr "9 минут"
+
+#: FMain.form:257
+msgid "10 minutes"
+msgstr "10 минут"
+
+#: FMain.form:274
+msgid "Help"
+msgstr "Справка"
+
+#: FMain.form:291
+msgid "CLog"
+msgstr "-"
+
+#: FMain.form:352
+msgid "Sniffing"
+msgstr "Сниффинг"
+
+#: FMain.form:363
+msgid "Clear log"
+msgstr "Очистить лог"
+
+#: FMain.form:374
+msgid "Sniffing autostart"
+msgstr "Автозапуск сниффинга"
+
+#: FMain.form:394
+msgid "Delete server"
+msgstr "Удалить сервер"
+
+#: FMain.form:401
+msgid "Add server"
+msgstr "Добавить сервер"
+
+#: FMain.form:408
+msgid "Edit server"
+msgstr "Изменить сервер"
+
+#: FMain.form:419
+msgid "Interval without broadcasting"
+msgstr "Интервал без вещяния"
+
+#: FMain.form:450
+msgid "Clear servers"
+msgstr "Очистить сервера"
+
+#: FMain.form:474
+msgid "Server data"
+msgstr "Данные сервера"
+
+#: FMain.form:482
+msgid "Legal servers"
+msgstr "Легальные сервера"
+
+#: FMain.form:490
+msgid "Table of logs"
+msgstr "Таблица логов"
+
+#: FMain.form:498
+msgid "Server address"
+msgstr "Адрес сервера"
+
+#: FServer.class:20
+msgid "Could not get mac address"
+msgstr "Не удалось получить MAC адрес"
+
+#: FServer.class:49
+msgid "Fields need to be filled"
+msgstr "Необходимо заполнить поля"
+
+#: FServer.class:53
+msgid "Incorrect IP address format"
+msgstr "Неверный формат IP адреса"
+
+#: FServer.class:57
+msgid "Incorrect MAC address format"
+msgstr "Неверный формат MAC адреса"
+
+#: FServer.class:61
+msgid "Identical record already exists"
+msgstr "Идентичная запись уже существует"
+
+#: FServer.form:25
+msgid "IP address:"
+msgstr "IP адрес:"
+
+#: FServer.form:49
+msgid "Get MAC of IP"
+msgstr "Получить MAC по IP"
+
+#: MCommon.module:72
+msgid "Error code:"
+msgstr "Код ошибки:"
+
+#: MCommon.module:73
+msgid "Error text:"
+msgstr "Текст ошибки:"
+
+#: MCommon.module:74
+msgid "Error place:"
+msgstr "Место ошибки:"
+
+#: MCommon.module:76
+msgid "Error"
+msgstr "Ошибка"
+

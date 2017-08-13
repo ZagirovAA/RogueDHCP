@@ -1,0 +1,106 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,560,385)
+  #Scaled = False
+  Text = ("Areas database")
+  Icon = Picture["icons/24.png"]
+  Resizable = False
+  Utility = True
+  SkipTaskbar = True
+  { Panel1 Panel
+    Move(7,7,427,371)
+    Border = Border.Plain
+    { grvAreas GridView
+      Move(14,77,399,280)
+      Mouse = Mouse.Pointing
+      Mode = Select.Single
+      Header = GridView.Horizontal
+      ScrollBar = Scroll.Vertical
+      Resizable = False
+    }
+    { pnlVlans Panel
+      Move(14,14,399,49)
+      Enabled = False
+      { Label1 Label
+        Move(2,0,206,21)
+        Text = ("Areas:")
+      }
+      { cmbVlan ComboBox
+        Move(231,21,77,28)
+        Mouse = Mouse.Pointing
+        ReadOnly = True
+      }
+      { Label2 Label
+        Move(233,0,73,21)
+        Text = ("Vlans:")
+      }
+      { tlbAdd ToolButton
+        Move(315,21,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Add VLAN")
+        Picture = Picture["icon:/16/add"]
+        Border = True
+      }
+      { tlbDelete ToolButton
+        Move(343,21,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Delete VLAN")
+        Picture = Picture["icon:/16/delete"]
+        Border = True
+      }
+      { tlbApply ToolButton
+        Move(371,21,28,28)
+        Mouse = Mouse.Pointing
+        ToolTip = ("Apply changes")
+        Picture = Picture["icon:/16/apply"]
+        Border = True
+      }
+      { cmbArea ComboBox
+        Move(0,21,224,28)
+        Mouse = Mouse.Pointing
+        ReadOnly = True
+        Sorted = True
+      }
+    }
+  }
+  { btnAdd Button
+    Move(441,7,112,28)
+    Mouse = Mouse.Pointing
+    Text = ("Add")
+    Picture = Picture["icon:/16/add"]
+  }
+  { btnEdit Button
+    Move(441,42,112,28)
+    Enabled = False
+    Mouse = Mouse.Pointing
+    Text = ("Edit")
+    Picture = Picture["icon:/16/edit"]
+  }
+  { btnDelete Button
+    Move(441,77,112,28)
+    Enabled = False
+    Mouse = Mouse.Pointing
+    Text = ("Delete")
+    Picture = Picture["icon:/16/delete"]
+  }
+  { btnClear Button
+    Move(441,112,112,28)
+    Enabled = False
+    Mouse = Mouse.Pointing
+    Text = ("Clear")
+    Picture = Picture["icon:/16/clear"]
+  }
+  { btnCancel Button
+    Move(441,350,112,28)
+    Mouse = Mouse.Pointing
+    Text = ("Cancel")
+    Picture = Picture["icon:/16/close"]
+  }
+  { btnSave Button
+    Move(441,315,112,28)
+    Mouse = Mouse.Pointing
+    Text = ("Save")
+    Picture = Picture["icon:/16/save"]
+  }
+}

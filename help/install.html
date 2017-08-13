@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Справочная система : Установка</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-9">
+          <h2 class="text-primary"><b>Справочная система</b></h2>
+          <h5>
+            Воспользуйтесь меню в левой части окна для перехода
+            в соответствующий раздел
+          </h5>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="list-group">
+            <a href="index.html" class="list-group-item">
+              <h4 class="list-group-item-heading">О программе</h4>
+              <p class="list-group-item-text">
+                Краткая информация о программе и ее авторе
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="features.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Возможности</h4>
+              <p class="list-group-item-text">
+                Список функциональных возможностей приложения
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="install.html" class="list-group-item active">
+              <h4 class="list-group-item-heading">Установка</h4>
+              <p class="list-group-item-text">
+                Полное описание процесса установки программы
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="start.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Первый запуск</h4>
+              <p class="list-group-item-text">
+                Упоминание о возможных проблемах при запуске
+              </p>
+            </a>
+          </div>
+          <div class="list-group">
+            <a href="settings.html" class="list-group-item">
+              <h4 class="list-group-item-heading">Настройка</h4>
+              <p class="list-group-item-text">
+                Подробная инструкция по настройке приложения
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-9">
+          <h4 class="text-primary"><b>Установка</b></h4>
+          <h5>Полное описание процесса установки программы</h5><br><hr>
+          <a class="btn btn-primary btn-lg" href="#">
+            Скачать архив с программой
+          </a>
+          <a class="btn btn-primary btn-lg" href="#">
+            Скачать Debian/Ubuntu пакет
+          </a>
+          <br><br>
+          <p>
+            Установка на операционной системе Linux ничем не отличается от
+            любой другой программы.
+          </p>
+          <p>
+            Установка возможна в двух вариантах:
+            <ol>
+              <li>Использование архива программы</li>
+              <li>Использование бинарного пакета</li>
+            </ol>
+          </p>
+          <p>
+            В первом случае необходимо всего лишь распаковать архив
+            с приложением и создать к нему ярлык запуска на рабочем столе.
+          </p>
+          <p>
+            В случае с бинарным пакетом, его нужно устанавливать используя
+            встроенные в систему инструменты установки. Например, в случае
+            ОС Ubuntu, можно выполнить установку командой
+            <kbd>sudo dpkg -i имя-пакета.deb</kbd>
+          </p><br>
+          <div class="alert alert-info" role="alert">
+            <strong>Внимание!</strong>
+            В данной справочной системе вы не найдете информации о том, как
+            установить бинарный пакет (кроме ранее описанного способа), или
+            распаковать архив с программой, либо создать кнопку запуска
+            приложения на рабочем столе. Причиной тому наличие, хоть и не
+            существенных, но все же отличий во всех этих процедурах, в
+            зависимости от типа используемого вами дистрибутива Linux и
+            окружения рабочего стола.
+          </div>
+          <div class="alert alert-info" role="alert">
+            <strong>Внимание!</strong>
+            В процессе уставноки могут возникнуть проблемы с зависимостями, о
+            которых упоминается в разделе о первом запуске.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

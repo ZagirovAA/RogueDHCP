@@ -1,0 +1,85 @@
+' Gambas module file
+
+' Space between controls
+Public Const MARGIN As Byte = 6
+Public Const HELPFILE As String = "help/index.html"
+Public arrLegalIP As New String[]
+Public arrLegalMAC As New String[]
+Public arrAreaNames As New String[]
+Public arrAreaVlans As New String[]
+
+Public Sub Main()
+
+  FMain.Show()
+
+End
+
+Public Sub ActivateRow(Grid As GridView, Optional Row As Integer = -1)
+
+  If Row = -1 Then Row = Grid.Rows.Max
+  Grid.Rows[Row].Selected = True
+  Grid.Current.EnsureVisible()
+
+End
+
+Public Function IsDuplicate(Ip As String, Mac As String) As Boolean
+
+  Dim i As Integer
+
+  With FMain
+    For i = 0 To .grvLegalIP.Rows.Max
+      If .grvLegalIP[i, 1].Text = Ip And If .grvLegalIP[i, 0].Text = Mac Then Return True
+    Next
+  End With
+
+End
+
+Public Sub ResizeLegal()
+
+  Dim i As Byte
+
+  With FMain.grvLegalIP
+    For i = 0 To 1
+      .Columns[i].Alignment = Align.Center
+    Next
+    .Columns[0].Width = .ClientWidth * 55 / 100
+    .Columns[1].Width = .ClientWidth * 45 / 100
+  End With
+
+End
+
+Public Sub SaveLegal()
+
+  Dim i As Integer
+
+  MCommon.arrLegalMAC.Clear()
+  MCommon.arrLegalIP.Clear()
+  With FMain
+    For i = 0 To .grvLegalIP.Rows.Max
+      MCommon.arrLegalMAC.Add(.grvLegalIP[i, 0].Text)
+      MCommon.arrLegalIP.Add(.grvLegalIP[i, 1].Text)
+    Next
+  End With
+  Settings["LegalServers/MACS"] = MCommon.arrLegalMAC.Join(" ")
+  Settings["LegalServers/IPS"] = MCommon.arrLegalIP.Join(" ")
+
+End
+
+Public Sub ShowError()
+
+  Dim strErrorMessage As String
+
+  strErrorMessage = ("Error code:") & gb.Tab & Error.Code & gb.CrLf
+  strErrorMessage &= ("Error text:") & gb.Tab & Error.Text & gb.CrLf
+  strErrorMessage &= ("Error place:") & gb.Tab & Error.Where
+
+  Message.Title = ("Error")
+  Message.Error(strErrorMessage)
+
+End
+
+Public Function IsRoot() As Boolean
+
+  If User.Id = 0 Then Return True
+
+End

@@ -1,0 +1,32 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,424,112)
+  #Scaled = False
+  Text = ("About")
+  Icon = Picture["icons/24.png"]
+  Resizable = False
+  Utility = True
+  SkipTaskbar = True
+  { Panel1 Panel
+    Move(8,8,408,96)
+    Border = Border.Plain
+    { PictureBox1 PictureBox
+      Move(16,14,64,64)
+      Picture = Picture["icons/64.png"]
+    }
+    { Label1 Label
+      Move(98,14,296,24)
+      Font = Font["Bold"]
+      Text = ("Rogue DHCP")
+    }
+    { Label2 Label
+      Move(96,34,296,24)
+      Text = ("Sniffer of non-leagal dhcp servers")
+    }
+    { Label3 Label
+      Move(96,56,296,24)
+      Text = ("Zagirov Abdul Askerovich (С) 2015 - 2017")
+    }
+  }
+}
