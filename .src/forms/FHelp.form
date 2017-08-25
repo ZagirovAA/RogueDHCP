@@ -3,7 +3,7 @@
 { Form Form
   Move(0,0,735,441)
   #Scaled = False
-  Text = ("Help system")
+  Text = ("Help system - Rogue DHCP")
   Icon = Picture["icons/24.png"]
   Maximized = True
   { pnlWeb Panel
@@ -11,7 +11,6 @@
     Border = Border.Plain
     { wwwHelp WebView
       Move(7,42,707,378)
-      Url = "www.google.com"
     }
     { pnlButtons Panel
       Move(7,6,154,28)

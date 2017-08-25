@@ -40,12 +40,6 @@
       Text = ("Clear")
       Shortcut = "Ctrl+R"
     }
-    { mnuServerSep2 Menu
-    }
-    { mnuServerFill Menu
-      Text = ("Fill")
-      Shortcut = "Ctrl+F"
-    }
   }
   { mnuLog Menu
     Text = ("Log")

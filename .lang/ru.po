@@ -1,15 +1,15 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: trunk 3.9.2\n"
-"PO-Revision-Date: 2017-02-13 08:13 UTC\n"
-"Last-Translator: Загиров Абдул Аскерович <zagirovaa@bk.ru>\n"
+"Project-Id-Version: roguedhcp 3.8.4\n"
+"PO-Revision-Date: 2017-08-23 13:11 UTC\n"
+"Last-Translator: Abdul Zagirov <zagirovaa@bk.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .project:1 FAbout.form:29
+#: .project:1 FAbout.form:30
 msgid "Rogue DHCP"
 msgstr "-"
 
@@ -21,11 +21,11 @@ msgstr "Сниффер левых DHCP серверов"
 msgid "About"
 msgstr "О программе"
 
-#: FAbout.form:34
+#: FAbout.form:35
 msgid "Sniffer of non-leagal dhcp servers"
 msgstr "Сниффер нелегальных dhcp серверов"
 
-#: FAbout.form:39
+#: FAbout.form:40
 msgid "Zagirov Abdul Askerovich (С) 2015 - 2017"
 msgstr "Загиров Абдул Аскерович (С) 2015 - 2017"
 
@@ -69,7 +69,7 @@ msgstr "VLAN уже существует"
 msgid "VLAN number must be between 1 and 4094"
 msgstr "Номер VLAN должен быть между 1 и 4094"
 
-#: FAreas.class:134 FMain.class:328
+#: FAreas.class:134 FMain.class:332
 msgid "No"
 msgstr "Нет"
 
@@ -77,7 +77,7 @@ msgstr "Нет"
 msgid "Sure you want to delete all the data?"
 msgstr "Уверены, что хотите удалить все данные?"
 
-#: FAreas.class:134 FMain.class:328
+#: FAreas.class:134 FMain.class:332
 msgid "Yes"
 msgstr "Да"
 
@@ -93,47 +93,47 @@ msgstr "Наименование района не изменилось"
 msgid "Areas database"
 msgstr "База районов"
 
-#: FAreas.form:47
+#: FAreas.form:48
 msgid "Areas:"
 msgstr "Районы:"
 
-#: FAreas.form:58
+#: FAreas.form:59
 msgid "Vlans:"
 msgstr "Вланы:"
 
-#: FAreas.form:64
+#: FAreas.form:65
 msgid "Add VLAN"
 msgstr "Добавить VLAN"
 
-#: FAreas.form:72
+#: FAreas.form:73
 msgid "Delete VLAN"
 msgstr "Удалить VLAN"
 
-#: FAreas.form:80
+#: FAreas.form:81
 msgid "Apply changes"
 msgstr "Применить изменения"
 
-#: FAreas.form:97 FMain.form:106 FServer.form:57
+#: FAreas.form:98 FMain.form:106 FServer.form:58
 msgid "Add"
 msgstr "Добавить"
 
-#: FAreas.form:105 FMain.form:111
+#: FAreas.form:106 FMain.form:111
 msgid "Edit"
 msgstr "Изменить"
 
-#: FAreas.form:113 FMain.form:116
+#: FAreas.form:114 FMain.form:116
 msgid "Delete"
 msgstr "Удалить"
 
-#: FAreas.form:121 FMain.form:124
+#: FAreas.form:122 FMain.form:124
 msgid "Clear"
 msgstr "Очистить"
 
-#: FAreas.form:128 FFill.form:109 FServer.form:64
+#: FAreas.form:129 FFill.form:110 FServer.form:65
 msgid "Cancel"
 msgstr "Отмена"
 
-#: FAreas.form:135
+#: FAreas.form:136
 msgid "Save"
 msgstr "Сохранить"
 
@@ -141,59 +141,59 @@ msgstr "Сохранить"
 msgid "Fill servers list"
 msgstr "Заполнить список серверов"
 
-#: FFill.form:31 FServer.form:31
+#: FFill.form:32 FServer.form:32
 msgid "MAC address:"
 msgstr "MAC адрес:"
 
-#: FFill.form:37
+#: FFill.form:38
 msgid "Host number:"
 msgstr "Номер узла:"
 
-#: FFill.form:43
+#: FFill.form:44
 msgid "Start subnet:"
 msgstr "Начальная подсеть:"
 
-#: FFill.form:49
+#: FFill.form:50
 msgid "End subnet:"
 msgstr "Конечная подсеть:"
 
-#: FFill.form:55
+#: FFill.form:56
 msgid "Subnet mask:"
 msgstr "Маска подсети:"
 
-#: FFill.form:62
+#: FFill.form:63
 msgid "FF:FF:FF:FF:FF:FF"
 msgstr "-"
 
-#: FFill.form:78
+#: FFill.form:79
 msgid "192.168.0.0"
 msgstr "-"
 
-#: FFill.form:85
+#: FFill.form:86
 msgid "192.168.255.0"
 msgstr "-"
 
-#: FFill.form:102 FMain.form:132
+#: FFill.form:103 FMain.form:132
 msgid "Fill"
 msgstr "Заполнить"
 
 #: FHelp.form:19
-msgid "Help system"
-msgstr "Справочная система"
+msgid "Help system - Rogue DHCP"
+msgstr "Справочная система - Rogue DHCP"
 
-#: FHelp.form:39
+#: FHelp.form:38
 msgid "Refresh - F5"
 msgstr "Обновить - F5"
 
-#: FHelp.form:50
+#: FHelp.form:49
 msgid "Home - Home"
 msgstr "Домой - Home"
 
-#: FHelp.form:61
+#: FHelp.form:60
 msgid "Forward - Right"
 msgstr "Вперед - Right"
 
-#: FHelp.form:68
+#: FHelp.form:67
 msgid "Backward - Left"
 msgstr "Назад - Left"
 
@@ -225,39 +225,35 @@ msgstr "Район"
 msgid "IP address"
 msgstr "IP адрес"
 
-#: FMain.class:81
+#: FMain.class:85
 msgid "Stop"
 msgstr "Остановить"
 
-#: FMain.class:159
+#: FMain.class:163
 msgid "Network must be functional for the application to work"
 msgstr "Для работы приложения сеть должна функционировать"
 
-#: FMain.class:163
+#: FMain.class:167
 msgid "Tcpdump must be installed"
 msgstr "Tcpdump должен быть установлен"
 
-#: FMain.class:167
-msgid "Application must be launched under root account"
-msgstr "Приложение должно быть запущено под пользователем root"
-
-#: FMain.class:328
+#: FMain.class:332
 msgid "Sure you want to delete log table?"
 msgstr "Уверены, что хотите удалить таблицу логов?"
 
-#: FMain.class:387
+#: FMain.class:391
 msgid "Sure you want to delete all the leagal servers?"
 msgstr "Уверены, что хотите удалить все легальные сервера?"
 
-#: FMain.class:428
+#: FMain.class:432
 msgid "IP address was successfully put into clipboard"
 msgstr "IP адрес был успешно помещен в буфер обмена"
 
-#: FMain.class:437
+#: FMain.class:441
 msgid "MAC address was successfully put into clipboard"
 msgstr "MAC адрес был успешно помещен в буфер обмена"
 
-#: FMain.class:448
+#: FMain.class:452
 msgid "Help file was not found"
 msgstr "Файл справки не обнаружен"
 
@@ -425,11 +421,11 @@ msgstr "Неверный формат MAC адреса"
 msgid "Identical record already exists"
 msgstr "Идентичная запись уже существует"
 
-#: FServer.form:25
+#: FServer.form:26
 msgid "IP address:"
 msgstr "IP адрес:"
 
-#: FServer.form:49
+#: FServer.form:50
 msgid "Get MAC of IP"
 msgstr "Получить MAC по IP"
 

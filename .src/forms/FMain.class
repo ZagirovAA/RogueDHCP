@@ -11,7 +11,7 @@ Private strLastServer As String
 Public strCurrentIP As String
 ' MAC address of the current server
 Public strCurrentMAC As String
-' Log filename
+' Log file name
 Private Const LOGFILE As String = ".rogue.log"
 
 
@@ -59,6 +59,7 @@ Public Sub _new()
       .Columns[4].Text = "VLAN"
       .Columns[5].Text = ("Area")
    End With
+
    ' Set default values
    If Settings["AutoStart"] = Null Then Settings["AutoStart"] = False
    If Settings["VlansMode"] = Null Then Settings["VlansMode"] = False
@@ -67,16 +68,17 @@ Public Sub _new()
       MCommon.arrAreaNames = Split(Settings["Areas/Names"], ":")
       MCommon.arrAreaVlans = Split(Settings["Areas/Vlans"], ":")
    Endif
+
    ' Get saved settings
    mnuSettingsAutostart.Checked = Settings["AutoStart", False]
    tlbAuto.Value = mnuSettingsAutostart.Checked
    mnuSettingsVlans.Checked = Settings["VlansMode", False]
    tlbVlan.Value = mnuSettingsVlans.Checked
    slbInterval.Value = Settings["TimeInterval", 1]
-
    slbInterval_Change()
    GetLegal()
    GetLogs()
+
    ' Autostart sniffing process
    If Settings["AutoStart"] = True Then
       proSniff = Shell "tcpdump -e -n -i any port 67" For Input As "proSniff"
@@ -476,102 +478,6 @@ Public Sub mnuSettingsAreas_Click()
 
 End
 
-Public Sub tlbAreas_Click()
-
-   mnuSettingsAreas_Click()
-
-End
-
-Public Sub tlbExit_Click()
-
-   mnuFileExit_Click()
-
-End
-
-Public Sub tlbAuto_Click()
-
-   mnuSettingsAutostart_Click()
-
-End
-
-Public Sub mnuCLogCopyIP_Click()
-
-   mnuLogCopyIP_Click()
-
-End
-
-Public Sub mnuCLogCopyMAC_Click()
-
-   mnuLogCopyMAC_Click()
-
-End
-
-Public Sub tlbEmpty_Click()
-
-   mnuLogClear_Click()
-
-End
-
-Public Sub tlbSniff_Click()
-
-   mnuSnifferAction_Click()
-
-End
-
-Public Sub tlbVlan_Click()
-
-   mnuSettingsVlans_Click()
-
-End
-
-Public Sub tlbAdd_Click()
-
-   mnuServerAdd_Click()
-
-End
-
-Public Sub tlbEdit_Click()
-
-   mnuServerEdit_Click()
-
-End
-
-Public Sub tlbDelete_Click()
-
-   mnuServerDelete_Click()
-
-End
-
-Public Sub tlbAbout_Click()
-
-   mnuHelpAbout_Click()
-
-End
-
-Public Sub tlbClear_Click()
-
-   mnuServerEmpty_Click()
-
-End
-
-Public Sub mnuFileExit_Click()
-
-   Me.Close()
-
-End
-
-Public Sub mnuHelpAbout_Click()
-
-   FAbout.ShowModal()
-
-End
-
-Public Sub mnuServerFill_Click()
-
-   FFill.ShowModal()
-
-End
-
 Public Function VlanExist(Vlan As String) As Integer
 
    Dim i As Integer
@@ -662,5 +568,95 @@ Public Sub GetLegal()
       MCommon.ActivateRow(grvLegalIP)
       MCommon.ResizeLegal()
    Endif
+
+End
+
+Public Sub tlbAreas_Click()
+
+   mnuSettingsAreas_Click()
+
+End
+
+Public Sub tlbExit_Click()
+
+   mnuFileExit_Click()
+
+End
+
+Public Sub tlbAuto_Click()
+
+   mnuSettingsAutostart_Click()
+
+End
+
+Public Sub mnuCLogCopyIP_Click()
+
+   mnuLogCopyIP_Click()
+
+End
+
+Public Sub mnuCLogCopyMAC_Click()
+
+   mnuLogCopyMAC_Click()
+
+End
+
+Public Sub tlbEmpty_Click()
+
+   mnuLogClear_Click()
+
+End
+
+Public Sub tlbSniff_Click()
+
+   mnuSnifferAction_Click()
+
+End
+
+Public Sub tlbVlan_Click()
+
+   mnuSettingsVlans_Click()
+
+End
+
+Public Sub tlbAdd_Click()
+
+   mnuServerAdd_Click()
+
+End
+
+Public Sub tlbEdit_Click()
+
+   mnuServerEdit_Click()
+
+End
+
+Public Sub tlbDelete_Click()
+
+   mnuServerDelete_Click()
+
+End
+
+Public Sub tlbAbout_Click()
+
+   mnuHelpAbout_Click()
+
+End
+
+Public Sub tlbClear_Click()
+
+   mnuServerEmpty_Click()
+
+End
+
+Public Sub mnuFileExit_Click()
+
+   Me.Close()
+
+End
+
+Public Sub mnuHelpAbout_Click()
+
+   FAbout.ShowModal()
 
 End
