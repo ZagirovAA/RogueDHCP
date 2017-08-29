@@ -2,7 +2,7 @@ MCommon
 Rogue DHCP
 0
 0
-0.1.67
+0.1.71
 
 gb.image
 gb.gui.qt
@@ -11,5 +11,5 @@ gb.desktop.x11
 gb.desktop
 gb.settings
 gb.gui.qt.webkit
-/home/abdul/cloud/projects/gambas/roguedhcp/libnetcon.gambas
+/home/abdul/cloud/projects/gambas/roguedhcp/libncnet.gambas
 

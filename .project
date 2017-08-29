@@ -3,7 +3,7 @@
 Title=Rogue DHCP
 Startup=MCommon
 Icon=icons/96.png
-Version=0.1.68
+Version=0.1.71
 Component=gb.image
 Component=gb.gui.qt
 Component=gb.form
@@ -11,7 +11,7 @@ Component=gb.desktop.x11
 Component=gb.desktop
 Component=gb.settings
 Component=gb.gui.qt.webkit
-Library=/home/abdul/cloud/projects/gambas/roguedhcp/libnetcon.gambas
+Library=/home/abdul/cloud/projects/gambas/roguedhcp/libncnet.gambas
 Description="Rogue DHCP sniffer"
 Authors="Zagirov Abdul Askerovich"
 TabSize=3

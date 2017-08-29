@@ -320,28 +320,28 @@
   }
   { lblFields Label
     Move(630,63,294,21)
-    Background = Color.SelectedBackground
+    Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Server data")
     Alignment = Align.Center
   }
   { lblLegalsTable Label
     Move(7,231,280,21)
-    Background = Color.SelectedBackground
+    Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Legal servers")
     Alignment = Align.Center
   }
   { lblLogTable Label
     Move(294,231,630,21)
-    Background = Color.SelectedBackground
+    Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Table of logs")
     Alignment = Align.Center
   }
   { lblRogueIP Label
     Move(7,63,616,21)
-    Background = Color.SelectedBackground
+    Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Server address")
     Alignment = Align.Center
