@@ -2,245 +2,245 @@
 
 Public Sub _new()
 
-   With grvAreas
-      .Columns.Count = 3
-      .Columns[0].Text = "N"
-      .Columns[1].Text = ("Areas")
-      .Columns[2].Text = "VLAN"
-   End With
+    With grvAreas
+        .Columns.Count = 3
+        .Columns[0].Text = "N"
+        .Columns[1].Text = ("Areas")
+        .Columns[2].Text = "VLAN"
+    End With
 
 End
 
 Public Sub Form_Show()
 
-   ResizeColumns()
+    ResizeColumns()
 
 End
 
 Public Sub Form_Open()
 
-   Dim i As Integer
+    Dim i As Integer
 
-   Me.Center()
+    Me.Center()
 
-   If Settings["Areas/Names"] <> Null Then
-      grvAreas.Clear()
-      MCommon.arrAreaNames = Split(Settings["Areas/Names"], ":")
-      MCommon.arrAreaVlans = Split(Settings["Areas/Vlans"], ":")
-      For i = 0 To MCommon.arrAreaNames.Max
-         ResizeColumns()
-         Inc grvAreas.Rows.Count
-         grvAreas[i, 0].Text = Str(i + 1)
-         grvAreas[i, 1].Text = MCommon.arrAreaNames[i]
-         If MCommon.arrAreaVlans.Max >= i Then
-            grvAreas[i, 2].Text = MCommon.arrAreaVlans[i]
-         Endif
-      Next
-      cmbArea.List = MCommon.arrAreaNames
-      MCommon.ActivateRow(grvAreas)
+    If Settings["Areas/Names"] <> Null Then
+        grvAreas.Clear()
+        MCommon.arrAreaNames = Split(Settings["Areas/Names"], ":")
+        MCommon.arrAreaVlans = Split(Settings["Areas/Vlans"], ":")
+        For i = 0 To MCommon.arrAreaNames.Max
+            ResizeColumns()
+            Inc grvAreas.Rows.Count
+            grvAreas[i, 0].Text = Str(i + 1)
+            grvAreas[i, 1].Text = MCommon.arrAreaNames[i]
+            If MCommon.arrAreaVlans.Max >= i Then
+                grvAreas[i, 2].Text = MCommon.arrAreaVlans[i]
+            Endif
+        Next
+        cmbArea.List = MCommon.arrAreaNames
+        MCommon.ActivateRow(grvAreas)
 
-   Endif
+    Endif
 
 End
 
 Public Sub btnCancel_Click()
 
-   Me.Close()
+    Me.Close()
 
 End
 
 Public Sub btnAdd_Click()
 
-   Dim strArea As String
+    Dim strArea As String
 
-   strArea = InputBox(("Enter area:"), ("Add area"), "")
-   strArea = Trim(strArea)
-   If IsNull(strArea) Then
-      Message.Warning(("You didn't enter name of the area"))
-      Return
-   Endif
-   If AreaExists(strArea) Then
-      Message.Warning(("Area already exists"))
-      Return
-   Endif
-   Inc grvAreas.Rows.Count
-   grvAreas[grvAreas.Rows.Max, 0].Text = Str(grvAreas.Rows.Count)
-   grvAreas[grvAreas.Rows.Max, 1].Text = strArea
-   grvAreas[grvAreas.Rows.Max, 2].Text = ""
-   cmbArea.Add(strArea)
-   MCommon.ActivateRow(grvAreas)
-   ResizeColumns()
+    strArea = InputBox(("Enter area:"), ("Add area"), "")
+    strArea = Trim(strArea)
+    If IsNull(strArea) Then
+        Message.Warning(("You didn't enter name of the area"))
+        Return
+    Endif
+    If AreaExists(strArea) Then
+        Message.Warning(("Area already exists"))
+        Return
+    Endif
+    Inc grvAreas.Rows.Count
+    grvAreas[grvAreas.Rows.Max, 0].Text = Str(grvAreas.Rows.Count)
+    grvAreas[grvAreas.Rows.Max, 1].Text = strArea
+    grvAreas[grvAreas.Rows.Max, 2].Text = ""
+    cmbArea.Add(strArea)
+    MCommon.ActivateRow(grvAreas)
+    ResizeColumns()
 
 End
 
 Public Sub grvAreas_Select()
 
-   If grvAreas.Row > -1 Then
-      cmbVlan.Clear()
-      cmbArea.Text = grvAreas[grvAreas.Row, 1].Text
-      cmbVlan.List = Split(grvAreas[grvAreas.Row, 2].Text, ",")
-      cmbVlan.Index = cmbVlan.List.Max
-      ActivateControls(True)
-   Endif
+    If grvAreas.Row > -1 Then
+        cmbVlan.Clear()
+        cmbArea.Text = grvAreas[grvAreas.Row, 1].Text
+        cmbVlan.List = Split(grvAreas[grvAreas.Row, 2].Text, ",")
+        cmbVlan.Index = cmbVlan.List.Max
+        ActivateControls(True)
+    Endif
 
 End
 
 Public Sub tlbAdd_Click()
 
-   Dim strVlan As String
+    Dim strVlan As String
 
-   strVlan = InputBox(("Enter VLAN:"), ("Add VLAN"), "")
-   strVlan = Trim(strVlan)
-   If IsNull(strVlan) Then
-      Message.Warning(("You didn't enter VLAN number"))
-      Return
-   Endif
-   If Not IsDigit(strVlan) Then
-      Message.Warning(("Digital value needs to be entered"))
-      Return
-   Endif
-   If cmbVlan.List.Exist(strVlan) Then
-      Message.Warning(("VLAN already exists"))
-      Return
-   Endif
-   If Val(strVlan) > 4096 Or If Val(strVlan) < 1 Then
-      Message.Warning(("VLAN number must be between 1 and 4094"))
-      Return
-   Endif
-   cmbVlan.Add(strVlan)
-   cmbVlan.Index = cmbVlan.List.Max
+    strVlan = InputBox(("Enter VLAN:"), ("Add VLAN"), "")
+    strVlan = Trim(strVlan)
+    If IsNull(strVlan) Then
+        Message.Warning(("You didn't enter VLAN number"))
+        Return
+    Endif
+    If Not IsDigit(strVlan) Then
+        Message.Warning(("Digital value needs to be entered"))
+        Return
+    Endif
+    If cmbVlan.List.Exist(strVlan) Then
+        Message.Warning(("VLAN already exists"))
+        Return
+    Endif
+    If Val(strVlan) > 4096 Or If Val(strVlan) < 1 Then
+        Message.Warning(("VLAN number must be between 1 and 4094"))
+        Return
+    Endif
+    cmbVlan.Add(strVlan)
+    cmbVlan.Index = cmbVlan.List.Max
 
 End
 
 Public Sub tlbDelete_Click()
 
-   If cmbVlan.List.Count > 0 Then
-      cmbVlan.Remove(cmbVlan.Index)
-   Endif
+    If cmbVlan.List.Count > 0 Then
+        cmbVlan.Remove(cmbVlan.Index)
+    Endif
 
 End
 
 Public Sub tlbApply_Click()
 
-   If cmbVlan.List.Count > 0 Then
-      grvAreas[grvAreas.Row, 2].Text = cmbVlan.List.Join()
-   Endif
+    If cmbVlan.List.Count > 0 Then
+        grvAreas[grvAreas.Row, 2].Text = cmbVlan.List.Join()
+    Endif
 
 End
 
 Public Sub btnClear_Click()
 
-   If grvAreas.Rows.Count > 0 Then
-      If Message.Warning(("Sure you want to delete all the data?"), ("Yes"), ("No")) = 1 Then
-         cmbVlan.Clear()
-         grvAreas.Clear()
-         grvAreas.Rows.Count = 0
-         ActivateControls(False)
-      Endif
-   Endif
+    If grvAreas.Rows.Count > 0 Then
+        If Message.Warning(("Sure you want to delete all the data?"), ("Yes"), ("No")) = 1 Then
+            cmbVlan.Clear()
+            grvAreas.Clear()
+            grvAreas.Rows.Count = 0
+            ActivateControls(False)
+        Endif
+    Endif
 
 End
 
 Public Sub btnEdit_Click()
 
-   Dim strOldArea As String
-   Dim strNewArea As String
+    Dim strOldArea As String
+    Dim strNewArea As String
 
-   If grvAreas.Rows.Count > 0 Then
-      strOldArea = grvAreas[grvAreas.Row, 1].Text
-      strNewArea = InputBox(("Enter area:"), ("Edit area"), strOldArea)
-      strNewArea = Trim(strNewArea)
-      If strNewArea = strOldArea Then
-         Message.Warning(("Name of the area was not changed"))
-         Return
-      Endif
-      If IsNull(strNewArea) Then
-         Message.Warning(("You didn't enter name of the area"))
-         Return
-      Endif
-      grvAreas[grvAreas.Row, 1].Text = strNewArea
-      ResizeColumns()
-   Endif
+    If grvAreas.Rows.Count > 0 Then
+        strOldArea = grvAreas[grvAreas.Row, 1].Text
+        strNewArea = InputBox(("Enter area:"), ("Edit area"), strOldArea)
+        strNewArea = Trim(strNewArea)
+        If strNewArea = strOldArea Then
+            Message.Warning(("Name of the area was not changed"))
+            Return
+        Endif
+        If IsNull(strNewArea) Then
+            Message.Warning(("You didn't enter name of the area"))
+            Return
+        Endif
+        grvAreas[grvAreas.Row, 1].Text = strNewArea
+        ResizeColumns()
+    Endif
 
 End
 
 Public Sub btnDelete_Click()
 
-   Dim intRow As Integer
+    Dim intRow As Integer
 
-   intRow = grvAreas.Row
-   If intRow > -1 Then
-      grvAreas.Rows.Remove(intRow)
-      If grvAreas.Rows.Count = 0 Then
-         ActivateControls(False)
-      Else
-         If intRow >= grvAreas.Rows.Max Then intRow = grvAreas.Rows.Max
-         grvAreas.Rows[intRow].Selected = True
-         grvAreas.Current.EnsureVisible()
-      Endif
-   Endif
+    intRow = grvAreas.Row
+    If intRow > -1 Then
+        grvAreas.Rows.Remove(intRow)
+        If grvAreas.Rows.Count = 0 Then
+            ActivateControls(False)
+        Else
+            If intRow >= grvAreas.Rows.Max Then intRow = grvAreas.Rows.Max
+            grvAreas.Rows[intRow].Selected = True
+            grvAreas.Current.EnsureVisible()
+        Endif
+    Endif
 
 End
 
 Public Sub btnSave_Click()
 
-   Dim i As Integer
+    Dim i As Integer
 
-   MCommon.arrAreaNames.Clear()
-   MCommon.arrAreaVlans.Clear()
-   For i = 0 To grvAreas.Rows.Max
-      MCommon.arrAreaNames.Add(grvAreas[i, 1].Text)
-      MCommon.arrAreaVlans.Add(grvAreas[i, 2].Text)
-   Next
-   Settings["Areas/Names"] = MCommon.arrAreaNames.Join(":")
-   Settings["Areas/Vlans"] = MCommon.arrAreaVlans.Join(":")
+    MCommon.arrAreaNames.Clear()
+    MCommon.arrAreaVlans.Clear()
+    For i = 0 To grvAreas.Rows.Max
+        MCommon.arrAreaNames.Add(grvAreas[i, 1].Text)
+        MCommon.arrAreaVlans.Add(grvAreas[i, 2].Text)
+    Next
+    Settings["Areas/Names"] = MCommon.arrAreaNames.Join(":")
+    Settings["Areas/Vlans"] = MCommon.arrAreaVlans.Join(":")
 
 End
 
 Public Function AreaExists(Area As String) As Boolean
 
-   Dim i As Integer
+    Dim i As Integer
 
-   For i = 0 To grvAreas.Rows.Max
-      If Area = grvAreas[i, 1].Text Then Return True
-   Next
+    For i = 0 To grvAreas.Rows.Max
+        If Area = grvAreas[i, 1].Text Then Return True
+    Next
 
 End
 
 Public Sub ResizeColumns()
 
-   Dim i As Byte
+    Dim i As Byte
 
-   With grvAreas
-      For i = 0 To 2
-         .Columns[i].Alignment = Align.Center
-      Next
-      .Columns[0].Width = .ClientWidth * 10 / 100
-      .Columns[1].Width = .ClientWidth * 45 / 100
-      .Columns[2].Width = .ClientWidth * 45 / 100
-   End With
+    With grvAreas
+        For i = 0 To 2
+            .Columns[i].Alignment = Align.Center
+        Next
+        .Columns[0].Width = .ClientWidth * 10 / 100
+        .Columns[1].Width = .ClientWidth * 45 / 100
+        .Columns[2].Width = .ClientWidth * 45 / 100
+    End With
 
 End
 
 Public Sub ActivateControls(Invert As Boolean)
 
-   pnlVlans.Enabled = Invert
-   btnEdit.Enabled = Invert
-   btnDelete.Enabled = Invert
-   btnClear.Enabled = Invert
+    pnlVlans.Enabled = Invert
+    btnEdit.Enabled = Invert
+    btnDelete.Enabled = Invert
+    btnClear.Enabled = Invert
 
 End
 
 
 Public Sub cmbArea_Click()
 
-   Dim i As Integer
+    Dim i As Integer
 
-   For i = 0 To cmbArea.Count - 1
-      If cmbArea.Text = grvAreas[i, 1].Text Then
-         MCommon.ActivateRow(grvAreas, i)
-         Return
-      Endif
-   Next
+    For i = 0 To cmbArea.Count - 1
+        If cmbArea.Text = grvAreas[i, 1].Text Then
+            MCommon.ActivateRow(grvAreas, i)
+            Return
+        Endif
+    Next
 
 End

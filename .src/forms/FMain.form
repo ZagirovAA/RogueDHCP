@@ -1,11 +1,23 @@
 # Gambas Form File 3.0
 
 { Form Form
-  Move(0,0,931,532)
+  Move(0,0,936,520)
   #Scaled = False
   Text = ("Rogue DHCP sniffer")
   Icon = Picture["icons/24.png"]
   Maximized = True
+  { mnuTray Menu
+    Text = ("Tray")
+    Visible = False
+    { mnuTrayOpen Menu
+      Text = ("Open")
+      Picture = Picture["icon:/22/screen"]
+    }
+    { mnuTrayExit Menu
+      Text = ("Exit")
+      Picture = Picture["icon:/22/quit"]
+    }
+  }
   { mnuFile Menu
     Text = ("File")
     { mnuFileExit Menu
@@ -184,7 +196,7 @@
     Resizable = False
   }
   { grvLegalIP GridView
-    Move(7,252,280,245)
+    Move(7,252,280,232)
     Mouse = Mouse.Pointing
     Mode = Select.Single
     Header = GridView.Horizontal
@@ -193,7 +205,7 @@
     Resizable = False
   }
   { grvLogs GridView
-    Move(294,252,630,245)
+    Move(294,252,632,232)
     Mouse = Mouse.Pointing
     PopupMenu = "mnuCLog"
     Mode = Select.Single
@@ -213,7 +225,7 @@
     Visible = False
   }
   { tmrInterval #Timer
-    #Move(861,434)
+    #Move(864,424)
   }
   { pnlToolbar Panel
     Move(7,7,917,49)
@@ -291,7 +303,7 @@
       Picture = Picture["images/about.png"]
     }
     { tlbExit ToolButton
-      Move(826,6,36,36)
+      Move(868,6,36,36)
       Mouse = Mouse.Pointing
       ToolTip = ("Exit")
       Picture = Picture["images/exit.png"]
@@ -317,6 +329,12 @@
       ToolTip = ("Areas database")
       Picture = Picture["images/area.png"]
     }
+    { tlbTray ToolButton
+      Move(826,6,36,36)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Hide to tray")
+      Picture = Picture["images/tray.png"]
+    }
   }
   { lblFields Label
     Move(630,63,294,21)
@@ -333,7 +351,7 @@
     Alignment = Align.Center
   }
   { lblLogTable Label
-    Move(294,231,630,21)
+    Move(294,231,632,24)
     Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Table of logs")
@@ -345,5 +363,11 @@
     Foreground = Color.White
     Text = ("Server address")
     Alignment = Align.Center
+  }
+  { triMain #TrayIcon
+    #Move(808,424)
+    Tooltip = ("Rogue DHCP sniffer")
+    Picture = Picture["icons/24.png"]
+    PopupMenu = "mnuTray"
   }
 }

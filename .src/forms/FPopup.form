@@ -1,0 +1,33 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,312,176)
+  #Scaled = False
+  Background = &H3C3C3C&
+  Resizable = False
+  Border = False
+  SkipTaskbar = True
+  Opacity = 5
+  { grvFields GridView
+    Move(8,48,296,120)
+    Background = Color.TextForeground
+    Foreground = Color.White
+    Border = False
+    Grid = False
+    ScrollBar = Scroll.None
+    Resizable = False
+  }
+  { lblFields Label
+    Move(8,8,296,32)
+    Font = Font["Bold,12"]
+    Background = &HFFFFFF&
+    Foreground = Color.TextForeground
+    Text = ("Server data")
+    Alignment = Align.Center
+  }
+  { tmrPopup #Timer
+    #Move(248,112)
+    Enabled = True
+    Delay = 5000
+  }
+}

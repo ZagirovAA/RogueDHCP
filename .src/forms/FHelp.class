@@ -2,86 +2,86 @@
 
 Public Sub Form_Resize()
 
-   With pnlWeb
-      .W = Me.ClientW - MCommon.MARGIN * 2
-      .H = Me.ClientH - MCommon.MARGIN * 2
-      .Left = MCommon.MARGIN
-      .Top = MCommon.MARGIN
-   End With
+    With pnlWeb
+        .W = Me.ClientW - MCommon.MARGIN * 2
+        .H = Me.ClientH - MCommon.MARGIN * 2
+        .Left = MCommon.MARGIN
+        .Top = MCommon.MARGIN
+    End With
 
-   pnlButtons.Left = MCommon.MARGIN
+    pnlButtons.Left = MCommon.MARGIN
 
-   pnlUrl.W = pnlWeb.W - pnlButtons.W - MCommon.MARGIN * 4
-   pnlUrl.Left = pnlButtons.W + MCommon.MARGIN * 3
+    pnlUrl.W = pnlWeb.W - pnlButtons.W - MCommon.MARGIN * 4
+    pnlUrl.Left = pnlButtons.W + MCommon.MARGIN * 3
 
-   txbUrl.W = pnlUrl.W - spnStatus.W - MCommon.MARGIN * 3
-   txbUrl.Left = MCommon.MARGIN
+    txbUrl.W = pnlUrl.W - spnStatus.W - MCommon.MARGIN * 3
+    txbUrl.Left = MCommon.MARGIN
 
-   spnStatus.Left = txbUrl.W + MCommon.MARGIN * 2
+    spnStatus.Left = txbUrl.W + MCommon.MARGIN * 2
 
-   With wwwHelp
-      .W = pnlWeb.W - MCommon.MARGIN * 2
-      .H = pnlWeb.H - txbUrl.H - MCommon.MARGIN * 3
-      .Left = MCommon.MARGIN
-      .Top = txbUrl.H + MCommon.MARGIN * 2
-   End With
+    With wwwHelp
+        .W = pnlWeb.W - MCommon.MARGIN * 2
+        .H = pnlWeb.H - txbUrl.H - MCommon.MARGIN * 3
+        .Left = MCommon.MARGIN
+        .Top = txbUrl.H + MCommon.MARGIN * 2
+    End With
 
 End
 
 Public Sub Form_Open()
 
-   Me.Center()
+    Me.Center()
 
 End
 
 Public Sub tlbBackward_Click()
 
-   wwwHelp.Back()
+    wwwHelp.Back()
 
 End
 
 Public Sub tlbForward_Click()
 
-   wwwHelp.Forward()
+    wwwHelp.Forward()
 
 End
 
 Public Sub tlbRefresh_Click()
 
-   wwwHelp.Reload()
+    wwwHelp.Reload()
 
 End
 
 Public Sub wwwHelp_Progress()
 
-   spnStatus.Visible = True
-   txbUrl.Text = wwwHelp.Url
+    spnStatus.Visible = True
+    txbUrl.Text = wwwHelp.Url
 
 End
 
 Public Sub wwwHelp_Load()
 
-   spnStatus.Visible = False
+    spnStatus.Visible = False
 
 End
 
 Public Sub tlbHome_Click()
 
-   wwwHelp.Url = "file://" & Application.Path &/ MCommon.HELPFILE
+    wwwHelp.Url = "file://" & Application.Path &/ MCommon.HELPFILE
 
 End
 
 Public Sub Form_KeyPress()
 
-   Select Case Key.Code
-      Case Key.Left
-         tlbBackward_Click()
-      Case Key.Right
-         tlbForward_Click()
-      Case Key.Home
-         tlbHome_Click()
-      Case Key.F5
-         tlbRefresh_Click()
-   End Select
+    Select Case Key.Code
+        Case Key.Left
+            tlbBackward_Click()
+        Case Key.Right
+            tlbForward_Click()
+        Case Key.Home
+            tlbHome_Click()
+        Case Key.F5
+            tlbRefresh_Click()
+    End Select
 
 End

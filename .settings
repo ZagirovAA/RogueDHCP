@@ -1,3 +1,6 @@
+[Bookmarks]
+FMain=[180]
+
 [Breakpoints]
 Count=0
 
@@ -44,7 +47,7 @@ Path="roguedhcp.gambas"
 File[1]=".src/forms/FMain.form"
 Active=2
 Count=2
-File[2]=".src/forms/FMain.class:8.170"
+File[2]=".src/forms/FMain.class:0.175"
 
 [Watches]
 Count=0

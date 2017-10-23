@@ -1,8 +1,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: roguedhcp 3.8.4\n"
-"PO-Revision-Date: 2017-08-23 13:11 UTC\n"
+"Project-Id-Version: roguedhcp 3.10.0\n"
+"PO-Revision-Date: 2017-10-02 14:46 UTC\n"
 "Last-Translator: Abdul Zagirov <zagirovaa@bk.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -13,11 +13,11 @@ msgstr ""
 msgid "Rogue DHCP"
 msgstr "-"
 
-#: .project:2 FMain.form:80
+#: .project:2 FMain.form:78 FMain.form:83
 msgid "Rogue DHCP sniffer"
 msgstr "Сниффер левых DHCP серверов"
 
-#: FAbout.form:12 FMain.form:277
+#: FAbout.form:12 FMain.form:267 FMain.form:287
 msgid "About"
 msgstr "О программе"
 
@@ -69,7 +69,7 @@ msgstr "VLAN уже существует"
 msgid "VLAN number must be between 1 and 4094"
 msgstr "Номер VLAN должен быть между 1 и 4094"
 
-#: FAreas.class:134 FMain.class:332
+#: FAreas.class:134 FMain.class:334 FMain.class:335
 msgid "No"
 msgstr "Нет"
 
@@ -77,7 +77,7 @@ msgstr "Нет"
 msgid "Sure you want to delete all the data?"
 msgstr "Уверены, что хотите удалить все данные?"
 
-#: FAreas.class:134 FMain.class:332
+#: FAreas.class:134 FMain.class:334 FMain.class:335
 msgid "Yes"
 msgstr "Да"
 
@@ -89,7 +89,7 @@ msgstr "Изменить район"
 msgid "Name of the area was not changed"
 msgstr "Наименование района не изменилось"
 
-#: FAreas.form:23 FMain.form:268
+#: FAreas.form:23 FMain.form:258 FMain.form:278
 msgid "Areas database"
 msgstr "База районов"
 
@@ -113,23 +113,23 @@ msgstr "Удалить VLAN"
 msgid "Apply changes"
 msgstr "Применить изменения"
 
-#: FAreas.form:98 FMain.form:106 FServer.form:58
+#: FAreas.form:98 FMain.form:104 FMain.form:124 FServer.form:58
 msgid "Add"
 msgstr "Добавить"
 
-#: FAreas.form:106 FMain.form:111
+#: FAreas.form:106 FMain.form:109 FMain.form:129
 msgid "Edit"
 msgstr "Изменить"
 
-#: FAreas.form:114 FMain.form:116
+#: FAreas.form:114 FMain.form:114 FMain.form:134
 msgid "Delete"
 msgstr "Удалить"
 
-#: FAreas.form:122 FMain.form:124
+#: FAreas.form:122 FMain.form:122 FMain.form:142
 msgid "Clear"
 msgstr "Очистить"
 
-#: FAreas.form:129 FFill.form:110 FServer.form:65
+#: FAreas.form:129 FServer.form:65
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -137,63 +137,23 @@ msgstr "Отмена"
 msgid "Save"
 msgstr "Сохранить"
 
-#: FFill.form:20
-msgid "Fill servers list"
-msgstr "Заполнить список серверов"
-
-#: FFill.form:32 FServer.form:32
-msgid "MAC address:"
-msgstr "MAC адрес:"
-
-#: FFill.form:38
-msgid "Host number:"
-msgstr "Номер узла:"
-
-#: FFill.form:44
-msgid "Start subnet:"
-msgstr "Начальная подсеть:"
-
-#: FFill.form:50
-msgid "End subnet:"
-msgstr "Конечная подсеть:"
-
-#: FFill.form:56
-msgid "Subnet mask:"
-msgstr "Маска подсети:"
-
-#: FFill.form:63
-msgid "FF:FF:FF:FF:FF:FF"
-msgstr "-"
-
-#: FFill.form:79
-msgid "192.168.0.0"
-msgstr "-"
-
-#: FFill.form:86
-msgid "192.168.255.0"
-msgstr "-"
-
-#: FFill.form:103 FMain.form:132
-msgid "Fill"
-msgstr "Заполнить"
-
 #: FHelp.form:19
 msgid "Help system - Rogue DHCP"
 msgstr "Справочная система - Rogue DHCP"
 
-#: FHelp.form:38
+#: FHelp.form:37
 msgid "Refresh - F5"
 msgstr "Обновить - F5"
 
-#: FHelp.form:49
+#: FHelp.form:48
 msgid "Home - Home"
 msgstr "Домой - Home"
 
-#: FHelp.form:60
+#: FHelp.form:59
 msgid "Forward - Right"
 msgstr "Вперед - Right"
 
-#: FHelp.form:67
+#: FHelp.form:66
 msgid "Backward - Left"
 msgstr "Назад - Left"
 
@@ -225,179 +185,195 @@ msgstr "Район"
 msgid "IP address"
 msgstr "IP адрес"
 
-#: FMain.class:85
+#: FMain.class:87
 msgid "Stop"
 msgstr "Остановить"
 
-#: FMain.class:163
+#: FMain.class:165
 msgid "Network must be functional for the application to work"
 msgstr "Для работы приложения сеть должна функционировать"
 
-#: FMain.class:167
+#: FMain.class:169
 msgid "Tcpdump must be installed"
 msgstr "Tcpdump должен быть установлен"
 
-#: FMain.class:332
+#: FMain.class:173
+msgid "Application must be launched under root account"
+msgstr ""
+
+#: FMain.class:334 FMain.class:335
 msgid "Sure you want to delete log table?"
 msgstr "Уверены, что хотите удалить таблицу логов?"
 
-#: FMain.class:391
+#: FMain.class:393 FMain.class:394
 msgid "Sure you want to delete all the leagal servers?"
 msgstr "Уверены, что хотите удалить все легальные сервера?"
 
-#: FMain.class:432
+#: FMain.class:434 FMain.class:435
 msgid "IP address was successfully put into clipboard"
 msgstr "IP адрес был успешно помещен в буфер обмена"
 
-#: FMain.class:441
+#: FMain.class:443 FMain.class:444
 msgid "MAC address was successfully put into clipboard"
 msgstr "MAC адрес был успешно помещен в буфер обмена"
 
-#: FMain.class:452
+#: FMain.class:454 FMain.class:455
 msgid "Help file was not found"
 msgstr "Файл справки не обнаружен"
 
-#: FMain.form:85
+#: FMain.form:83 FMain.form:103
 msgid "File"
 msgstr "Файл"
 
-#: FMain.form:88
+#: FMain.form:86 FMain.form:97
 msgid "Exit"
 msgstr "Выход"
 
-#: FMain.form:94
+#: FMain.form:88
+msgid "Tray"
+msgstr ""
+
+#: FMain.form:92
+msgid "Open"
+msgstr "Открыть"
+
+#: FMain.form:92 FMain.form:112
 msgid "Sniffer"
 msgstr "Сниффер"
 
-#: FMain.form:97
+#: FMain.form:95 FMain.form:115
 msgid "Start"
 msgstr "Запуск"
 
-#: FMain.form:103
+#: FMain.form:101 FMain.form:121
 msgid "Server"
 msgstr "Сервер"
 
-#: FMain.form:138
+#: FMain.form:128 FMain.form:148
 msgid "Log"
 msgstr "Лог"
 
-#: FMain.form:149
+#: FMain.form:139 FMain.form:159
 msgid "Copy IP address"
 msgstr "Копировать IP адрес"
 
-#: FMain.form:154
+#: FMain.form:144 FMain.form:164
 msgid "Copy MAC address"
 msgstr "Копировать MAC адрес"
 
-#: FMain.form:160
+#: FMain.form:150 FMain.form:170
 msgid "Settings"
 msgstr "Настройки"
 
-#: FMain.form:163
+#: FMain.form:153 FMain.form:173
 msgid "Autostart"
 msgstr "Автозапуск"
 
-#: FMain.form:172
+#: FMain.form:162 FMain.form:182
 msgid "VLAN mode"
 msgstr "Режим VLAN"
 
-#: FMain.form:181
+#: FMain.form:171 FMain.form:191
 msgid "Interval"
 msgstr "Интервал"
 
-#: FMain.form:185
+#: FMain.form:175 FMain.form:195
 msgid "1 minute"
 msgstr "1 минута"
 
-#: FMain.form:193
+#: FMain.form:183 FMain.form:203
 msgid "2 minutes"
 msgstr "2 минуты"
 
-#: FMain.form:201
+#: FMain.form:191 FMain.form:211
 msgid "3 minutes"
 msgstr "3 минуты"
 
-#: FMain.form:209
+#: FMain.form:199 FMain.form:219
 msgid "4 minutes"
 msgstr "4 минуты"
 
-#: FMain.form:217
+#: FMain.form:207 FMain.form:227
 msgid "5 minutes"
 msgstr "5 минут"
 
-#: FMain.form:225
+#: FMain.form:215 FMain.form:235
 msgid "6 minutes"
 msgstr "6 минут"
 
-#: FMain.form:233
+#: FMain.form:223 FMain.form:243
 msgid "7 minutes"
 msgstr "7 минут"
 
-#: FMain.form:241
+#: FMain.form:231 FMain.form:251
 msgid "8 minutes"
 msgstr "8 минут"
 
-#: FMain.form:249
+#: FMain.form:239 FMain.form:259
 msgid "9 minutes"
 msgstr "9 минут"
 
-#: FMain.form:257
+#: FMain.form:247 FMain.form:267
 msgid "10 minutes"
 msgstr "10 минут"
 
-#: FMain.form:274
+#: FMain.form:264 FMain.form:284
 msgid "Help"
 msgstr "Справка"
 
-#: FMain.form:291
+#: FMain.form:281 FMain.form:301
 msgid "CLog"
 msgstr "-"
 
-#: FMain.form:352
+#: FMain.form:342 FMain.form:362
 msgid "Sniffing"
 msgstr "Сниффинг"
 
-#: FMain.form:363
+#: FMain.form:353 FMain.form:373
 msgid "Clear log"
 msgstr "Очистить лог"
 
-#: FMain.form:374
+#: FMain.form:364 FMain.form:384
 msgid "Sniffing autostart"
 msgstr "Автозапуск сниффинга"
 
-#: FMain.form:394
+#: FMain.form:384 FMain.form:404
 msgid "Delete server"
 msgstr "Удалить сервер"
 
-#: FMain.form:401
+#: FMain.form:391 FMain.form:411
 msgid "Add server"
 msgstr "Добавить сервер"
 
-#: FMain.form:408
+#: FMain.form:398 FMain.form:418
 msgid "Edit server"
 msgstr "Изменить сервер"
 
-#: FMain.form:419
+#: FMain.form:409 FMain.form:429
 msgid "Interval without broadcasting"
 msgstr "Интервал без вещяния"
 
-#: FMain.form:450
+#: FMain.form:440 FMain.form:460
 msgid "Clear servers"
 msgstr "Очистить сервера"
 
-#: FMain.form:474
+#: FMain.form:464 FMain.form:491
 msgid "Server data"
 msgstr "Данные сервера"
 
-#: FMain.form:482
+#: FMain.form:472 FMain.form:499
 msgid "Legal servers"
 msgstr "Легальные сервера"
 
-#: FMain.form:490
+#: FMain.form:480 FMain.form:507
 msgid "Table of logs"
 msgstr "Таблица логов"
 
-#: FMain.form:498
+#: FMain.form:482
+msgid "Hide to tray"
+msgstr "Свернуть в трей"
+
+#: FMain.form:488 FMain.form:515
 msgid "Server address"
 msgstr "Адрес сервера"
 
@@ -424,6 +400,10 @@ msgstr "Идентичная запись уже существует"
 #: FServer.form:26
 msgid "IP address:"
 msgstr "IP адрес:"
+
+#: FServer.form:32
+msgid "MAC address:"
+msgstr "MAC адрес:"
 
 #: FServer.form:50
 msgid "Get MAC of IP"
