@@ -13,7 +13,7 @@ End
 
 Public Sub Form_Show()
 
-    ResizeColumns()
+    MCommon.ResizeColumns()
 
 End
 
@@ -28,7 +28,7 @@ Public Sub Form_Open()
         MCommon.arrAreaNames = Split(Settings["Areas/Names"], ":")
         MCommon.arrAreaVlans = Split(Settings["Areas/Vlans"], ":")
         For i = 0 To MCommon.arrAreaNames.Max
-            ResizeColumns()
+            MCommon.ResizeColumns()
             Inc grvAreas.Rows.Count
             grvAreas[i, 0].Text = Str(i + 1)
             grvAreas[i, 1].Text = MCommon.arrAreaNames[i]
@@ -59,7 +59,7 @@ Public Sub btnAdd_Click()
         Message.Warning(("You didn't enter name of the area"))
         Return
     Endif
-    If AreaExists(strArea) Then
+    If MCommon.AreaExists(strArea) Then
         Message.Warning(("Area already exists"))
         Return
     Endif
@@ -69,7 +69,7 @@ Public Sub btnAdd_Click()
     grvAreas[grvAreas.Rows.Max, 2].Text = ""
     cmbArea.Add(strArea)
     MCommon.ActivateRow(grvAreas)
-    ResizeColumns()
+    MCommon.ResizeColumns()
 
 End
 
@@ -80,7 +80,7 @@ Public Sub grvAreas_Select()
         cmbArea.Text = grvAreas[grvAreas.Row, 1].Text
         cmbVlan.List = Split(grvAreas[grvAreas.Row, 2].Text, ",")
         cmbVlan.Index = cmbVlan.List.Max
-        ActivateControls(True)
+        MCommon.ActivateControls(True)
     Endif
 
 End
@@ -135,7 +135,7 @@ Public Sub btnClear_Click()
             cmbVlan.Clear()
             grvAreas.Clear()
             grvAreas.Rows.Count = 0
-            ActivateControls(False)
+            MCommon.ActivateControls(False)
         Endif
     Endif
 
@@ -159,7 +159,7 @@ Public Sub btnEdit_Click()
             Return
         Endif
         grvAreas[grvAreas.Row, 1].Text = strNewArea
-        ResizeColumns()
+        MCommon.ResizeColumns()
     Endif
 
 End
@@ -172,7 +172,7 @@ Public Sub btnDelete_Click()
     If intRow > -1 Then
         grvAreas.Rows.Remove(intRow)
         If grvAreas.Rows.Count = 0 Then
-            ActivateControls(False)
+            MCommon.ActivateControls(False)
         Else
             If intRow >= grvAreas.Rows.Max Then intRow = grvAreas.Rows.Max
             grvAreas.Rows[intRow].Selected = True
@@ -192,45 +192,11 @@ Public Sub btnSave_Click()
         MCommon.arrAreaNames.Add(grvAreas[i, 1].Text)
         MCommon.arrAreaVlans.Add(grvAreas[i, 2].Text)
     Next
+    MCommon.ExportSettings()
     Settings["Areas/Names"] = MCommon.arrAreaNames.Join(":")
     Settings["Areas/Vlans"] = MCommon.arrAreaVlans.Join(":")
 
 End
-
-Public Function AreaExists(Area As String) As Boolean
-
-    Dim i As Integer
-
-    For i = 0 To grvAreas.Rows.Max
-        If Area = grvAreas[i, 1].Text Then Return True
-    Next
-
-End
-
-Public Sub ResizeColumns()
-
-    Dim i As Byte
-
-    With grvAreas
-        For i = 0 To 2
-            .Columns[i].Alignment = Align.Center
-        Next
-        .Columns[0].Width = .ClientWidth * 10 / 100
-        .Columns[1].Width = .ClientWidth * 45 / 100
-        .Columns[2].Width = .ClientWidth * 45 / 100
-    End With
-
-End
-
-Public Sub ActivateControls(Invert As Boolean)
-
-    pnlVlans.Enabled = Invert
-    btnEdit.Enabled = Invert
-    btnDelete.Enabled = Invert
-    btnClear.Enabled = Invert
-
-End
-
 
 Public Sub cmbArea_Click()
 

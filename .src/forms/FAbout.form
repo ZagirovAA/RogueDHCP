@@ -12,7 +12,7 @@
     Move(8,8,408,96)
     Border = Border.Plain
     { PictureBox1 PictureBox
-      Move(16,14,64,64)
+      Move(16,16,64,64)
       Picture = Picture["icons/64.png"]
     }
     { Label1 Label
@@ -21,11 +21,11 @@
       Text = ("Rogue DHCP")
     }
     { Label2 Label
-      Move(96,34,296,24)
+      Move(96,36,296,24)
       Text = ("Sniffer of non-leagal dhcp servers")
     }
     { Label3 Label
-      Move(96,56,296,24)
+      Move(96,58,296,24)
       Text = ("Zagirov Abdul Askerovich (С) 2015 - 2017")
     }
   }

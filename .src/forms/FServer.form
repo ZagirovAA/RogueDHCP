@@ -1,49 +1,47 @@
 # Gambas Form File 3.0
 
 { Form Form
-  Move(0,0,294,146)
+  Move(0,0,336,160)
   #Scaled = False
   Icon = Picture["icons/24.png"]
   Resizable = False
-  Utility = True
-  SkipTaskbar = True
   { Panel1 Panel
-    Move(7,7,280,98)
+    Move(8,8,320,104)
     Border = Border.Plain
     { Label1 Label
-      Move(14,17,77,21)
+      Move(16,20,96,24)
       Text = ("IP address:")
       Alignment = Align.Right
     }
     { Label2 Label
-      Move(14,60,77,21)
+      Move(16,60,96,24)
       Text = ("MAC address:")
       Alignment = Align.Right
     }
     { vlbIPAddress ValueBox
-      Move(98,14,168,28)
+      Move(120,16,184,32)
       Type = ValueBox.IPAddress
     }
     { msbMACAddress MaskBox
-      Move(98,56,136,28)
+      Move(120,56,144,32)
       Alignment = Align.Right
       Mask = "[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]"
     }
     { btnGetMAC Button
-      Move(238,56,28,28)
+      Move(272,56,32,32)
       Mouse = Mouse.Pointing
       ToolTip = ("Get MAC of IP")
       Picture = Picture["icon:/16/apply"]
     }
   }
   { btnAction Button
-    Move(6,111,112,28)
+    Move(8,120,120,32)
     Mouse = Mouse.Pointing
     Text = ("Add")
     Picture = Picture["icon:/16/add"]
   }
   { btnCancel Button
-    Move(175,112,112,28)
+    Move(208,120,120,32)
     Mouse = Mouse.Pointing
     Text = ("Cancel")
     Picture = Picture["icon:/16/close"]

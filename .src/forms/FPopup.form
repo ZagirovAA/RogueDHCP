@@ -7,10 +7,9 @@
   Resizable = False
   Border = False
   SkipTaskbar = True
-  Opacity = 5
   { grvFields GridView
     Move(8,48,296,120)
-    Background = Color.TextForeground
+    Background = &H3C3C3C&
     Foreground = Color.White
     Border = False
     Grid = False
@@ -24,10 +23,5 @@
     Foreground = Color.TextForeground
     Text = ("Server data")
     Alignment = Align.Center
-  }
-  { tmrPopup #Timer
-    #Move(248,112)
-    Enabled = True
-    Delay = 5000
   }
 }

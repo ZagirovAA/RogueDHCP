@@ -21,28 +21,10 @@ Public Sub Form_Open()
 
 End
 
-Public Sub tmrPopup_Timer()
-
-    tmrPopup.Stop()
-    Me.Close()
-
-End
-
 Public Sub Form_Show()
 
     Me.Left = Screen.W - Me.W - 15
     Me.Top = 15
-    DataUpdate()
-
-End
-
-
-Public Sub DataUpdate()
-
-    grvFields[0, 1].Text = FMain.grvFields[0, 1].Text
-    grvFields[1, 1].Text = FMain.grvFields[1, 1].Text
-    grvFields[2, 1].Text = FMain.grvFields[2, 1].Text
-    grvFields[3, 1].Text = FMain.grvFields[3, 1].Text
-    grvFields[4, 1].Text = FMain.grvFields[4, 1].Text
+    MCommon.DataUpdate()
 
 End

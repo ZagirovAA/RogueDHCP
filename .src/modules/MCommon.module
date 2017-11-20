@@ -3,83 +3,273 @@
 ' Space between controls
 Public Const MARGIN As Byte = 6
 Public Const HELPFILE As String = "help/index.html"
+Public Const LOGFILE As String = ".rogue.log"
+Public strLogFile As String = User.Home &/ LOGFILE
+Public strBackLog As String = strLogFile & ".bak"
 Public arrLegalIP As New String[]
 Public arrLegalMAC As New String[]
 Public arrAreaNames As New String[]
 Public arrAreaVlans As New String[]
+Public strGlobalConfig As String = User.Home &/ ".config/gambas3" &/ Application.Name & ".conf"
+Public strBackupConfig As String = strGlobalConfig & ".bak"
 
 Public Sub Main()
 
-   FMain.Show()
+    FMain.Show()
 
 End
 
 Public Sub ActivateRow(Grid As GridView, Optional Row As Integer = -1)
 
-   If Row = -1 Then Row = Grid.Rows.Max
-   Grid.Rows[Row].Selected = True
-   Grid.Current.EnsureVisible()
+    If Row = -1 Then Row = Grid.Rows.Max
+    Grid.Rows[Row].Selected = True
+    Grid.Current.EnsureVisible()
 
 End
 
 Public Function IsDuplicate(Ip As String, Mac As String) As Boolean
 
-   Dim i As Integer
+    Dim i As Integer
 
-   With FMain
-      For i = 0 To .grvLegalIP.Rows.Max
-         If .grvLegalIP[i, 1].Text = Ip And If .grvLegalIP[i, 0].Text = Mac Then Return True
-      Next
-   End With
+    With FMain
+        For i = 0 To .grvLegalIP.Rows.Max
+            If .grvLegalIP[i, 1].Text = Ip And If .grvLegalIP[i, 0].Text = Mac Then Return True
+        Next
+    End With
 
 End
 
 Public Sub ResizeLegal()
 
-   Dim i As Byte
+    Dim i As Byte
 
-   With FMain.grvLegalIP
-      For i = 0 To 1
-         .Columns[i].Alignment = Align.Center
-      Next
-      .Columns[0].Width = .ClientWidth * 55 / 100
-      .Columns[1].Width = .ClientWidth * 45 / 100
-   End With
+    With FMain.grvLegalIP
+        For i = 0 To 1
+            .Columns[i].Alignment = Align.Center
+        Next
+        .Columns[0].Width = .ClientWidth * 55 / 100
+        .Columns[1].Width = .ClientWidth * 45 / 100
+    End With
 
 End
 
 Public Sub SaveLegal()
 
-   Dim i As Integer
+    Dim i As Integer
 
-   MCommon.arrLegalMAC.Clear()
-   MCommon.arrLegalIP.Clear()
-   With FMain
-      For i = 0 To .grvLegalIP.Rows.Max
-         MCommon.arrLegalMAC.Add(.grvLegalIP[i, 0].Text)
-         MCommon.arrLegalIP.Add(.grvLegalIP[i, 1].Text)
-      Next
-   End With
-   Settings["LegalServers/MACS"] = MCommon.arrLegalMAC.Join(" ")
-   Settings["LegalServers/IPS"] = MCommon.arrLegalIP.Join(" ")
+    arrLegalMAC.Clear()
+    arrLegalIP.Clear()
+    With FMain
+        For i = 0 To .grvLegalIP.Rows.Max
+            arrLegalMAC.Add(.grvLegalIP[i, 0].Text)
+            arrLegalIP.Add(.grvLegalIP[i, 1].Text)
+        Next
+    End With
+    ExportSettings()
+    Settings["LegalServers/MACS"] = arrLegalMAC.Join(" ")
+    Settings["LegalServers/IPS"] = arrLegalIP.Join(" ")
 
 End
 
 Public Sub ShowError()
 
-   Dim strErrorMessage As String
+    Dim strErrorMessage As String
 
-   strErrorMessage = ("Error code:") & gb.Tab & Error.Code & gb.CrLf
-   strErrorMessage &= ("Error text:") & gb.Tab & Error.Text & gb.CrLf
-   strErrorMessage &= ("Error place:") & gb.Tab & Error.Where
+    strErrorMessage = ("Error code:") & gb.Tab & Error.Code & gb.CrLf
+    strErrorMessage &= ("Error text:") & gb.Tab & Error.Text & gb.CrLf
+    strErrorMessage &= ("Error place:") & gb.Tab & Error.Where
 
-   Message.Title = ("Error")
-   Message.Error(strErrorMessage)
+    Message.Title = ("Error")
+    Message.Error(strErrorMessage)
 
 End
 
 Public Function IsRoot() As Boolean
 
-   If User.Id = 0 Then Return True
+    If User.Id = 0 Then Return True
+
+End
+
+Public Sub ExportSettings()
+
+    If Exist(strGlobalConfig) Then
+        If Exist(strBackupConfig) Then
+            Try Kill strBackupConfig
+            If Error Then
+                ShowError()
+                Return
+            Endif
+        Endif
+        Copy strGlobalConfig To strBackupConfig
+    Endif
+
+End
+
+Public Sub BackupLog()
+
+    If Exist(strLogFile) Then
+        If Exist(strBackLog) Then
+            Try Kill strBackLog
+            If Error Then
+                ShowError()
+                Return
+            Endif
+        Endif
+        Copy strLogFile To strBackLog
+    Endif
+
+End
+
+Public Function VlanExist(Vlan As String) As Integer
+
+    Dim i As Integer
+    Dim arrVlans As New String[]
+
+    For i = 0 To arrAreaVlans.Max
+        arrVlans = Split(arrAreaVlans[i], ",")
+        If arrVlans.Find(Vlan) > -1 Then Return i
+    Next
+    Return -1
+
+End
+
+Public Sub GetLogs()
+
+    Dim hFile As File
+    Dim strLine As String
+    Dim arrLine As New String[]
+    Dim intRow As Integer
+    Dim i As Byte
+
+    If Exist(strLogFile) Then
+        Try hFile = Open strLogFile For Input
+        If Error Then
+            ShowError()
+            Return
+        Endif
+        Do Until Eof(hFile)
+            Line Input #hFile, strLine
+            arrLine = Split(strLine, gb.Tab)
+            Inc FMain.grvLogs.Rows.Count
+            FMain.grvLogs[intRow, 0].Text = Trim(Str(intRow + 1))
+            For i = 1 To 5
+                FMain.grvLogs[intRow, i].Text = Trim(arrLine[i - 1])
+            Next
+            Inc intRow
+        Loop
+        ActivateRow(FMain.grvLogs)
+        ResizeLogs()
+    Endif
+
+End
+
+Public Sub ResizeLogs()
+
+    Dim i As Byte
+
+    With FMain.grvLogs
+        For i = 0 To 5
+            .Columns[i].Alignment = Align.Center
+        Next
+        .Columns[0].Width = .ClientWidth * 9 / 100
+        .Columns[1].Width = .ClientWidth * 22 / 100
+        .Columns[2].Width = .ClientWidth * 20 / 100
+        .Columns[3].Width = .ClientWidth * 18 / 100
+        .Columns[4].Width = .ClientWidth * 8 / 100
+        .Columns[5].Width = .ClientWidth * 23 / 100 + 4
+    End With
+
+End
+
+Public Sub ClearGrid()
+
+    Dim i As Byte
+
+    For i = 0 To 4
+        FMain.grvFields[i, 1].Clear()
+    Next
+    FMain.grvFields.Refresh()
+
+End
+
+Public Sub GetLegal()
+
+    Dim i As Integer
+
+    arrLegalMAC.Clear()
+    arrLegalIP.Clear()
+    If Settings["LegalServers/MACS"] <> Null And If Settings["LegalServers/IPS"] <> Null Then
+        FMain.grvLegalIP.Clear()
+        arrLegalMAC = Split(Settings["LegalServers/MACS"], " ")
+        arrLegalIP = Split(Settings["LegalServers/IPS"], " ")
+        For i = 0 To arrLegalMAC.Max
+            Inc FMain.grvLegalIP.Rows.Count
+            FMain.grvLegalIP[i, 0].Text = arrLegalMAC[i]
+            FMain.grvLegalIP[i, 1].Text = arrLegalIP[i]
+        Next
+        ActivateRow(FMain.grvLegalIP)
+        ResizeLegal()
+    Endif
+
+End
+
+Public Function DataExist() As Boolean
+
+    Dim i As Byte
+    Dim bolResult As Boolean = True
+
+    For i = 0 To 4
+        bolResult = bolResult And FMain.grvFields[i, 1].Text <> ""
+    Next
+    Return bolResult
+
+End
+
+Public Sub DataUpdate()
+
+    With FMain
+        FPopup.grvFields[0, 1].Text = .grvFields[0, 1].Text
+        FPopup.grvFields[1, 1].Text = .grvFields[1, 1].Text
+        FPopup.grvFields[2, 1].Text = .grvFields[2, 1].Text
+        FPopup.grvFields[3, 1].Text = .grvFields[3, 1].Text
+        FPopup.grvFields[4, 1].Text = .grvFields[4, 1].Text
+    End With
+
+End
+
+
+Public Function AreaExists(Area As String) As Boolean
+
+    Dim i As Integer
+
+    For i = 0 To FAreas.grvAreas.Rows.Max
+        If Area = FAreas.grvAreas[i, 1].Text Then Return True
+    Next
+
+End
+
+Public Sub ResizeColumns()
+
+    Dim i As Byte
+
+    With FAreas.grvAreas
+        For i = 0 To 2
+            .Columns[i].Alignment = Align.Center
+        Next
+        .Columns[0].Width = .ClientWidth * 10 / 100
+        .Columns[1].Width = .ClientWidth * 45 / 100
+        .Columns[2].Width = .ClientWidth * 45 / 100
+    End With
+
+End
+
+Public Sub ActivateControls(Invert As Boolean)
+
+    With FAreas
+        .pnlVlans.Enabled = Invert
+        .btnEdit.Enabled = Invert
+        .btnDelete.Enabled = Invert
+        .btnClear.Enabled = Invert
+    End With
 
 End

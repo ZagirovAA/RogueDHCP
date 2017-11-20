@@ -11,9 +11,6 @@ Private strLastServer As String
 Public strCurrentIP As String
 ' MAC address of the current server
 Public strCurrentMAC As String
-' Log file name
-Private Const LOGFILE As String = ".rogue.log"
-
 
 Public Sub _new()
 
@@ -23,9 +20,8 @@ Public Sub _new()
         .Columns.Count = 2
         .Rows.Count = 5
         .Columns[0].Background = Color.Background
-        For i = 0 To 1
-            .Columns[i].Alignment = Align.Center
-        Next
+        .Columns[0].Alignment = Align.Center
+        .Columns[1].Alignment = Align.Center
         .Columns[0].Width = 125
         .Columns[0].Text = ("Field")
         .Columns[1].Text = ("Value")
@@ -39,9 +35,8 @@ Public Sub _new()
 
     With grvLegalIP
         .Columns.Count = 2
-        For i = 0 To 1
-            .Columns[i].Alignment = Align.Center
-        Next
+        .Columns[0].Alignment = Align.Center
+        .Columns[1].Alignment = Align.Center
         .Columns[0].Text = ("MAC address")
         .Columns[1].Text = ("IP address")
     End With
@@ -76,8 +71,8 @@ Public Sub _new()
     tlbVlan.Value = mnuSettingsVlans.Checked
     slbInterval.Value = Settings["TimeInterval", 1]
     slbInterval_Change()
-    GetLegal()
-    GetLogs()
+    MCommon.GetLegal()
+    MCommon.GetLogs()
 
     ' Autostart sniffing process
     If Settings["AutoStart"] = True Then
@@ -88,6 +83,7 @@ Public Sub _new()
         spnStatus.Visible = True
         tmrInterval.Delay = CInt(Settings["TimeInterval", 1]) * 1000 * 60
     Endif
+
 Catch
     MCommon.ShowError()
 
@@ -154,30 +150,38 @@ Public Sub Form_Resize()
         .Height = grvLegalIP.H
         .Left = lblLogTable.Left
         .Top = lblLogTable.Top + lblLogTable.H
-        ResizeLogs()
+        MCommon.ResizeLogs()
     End With
+
+    ' Popup window must be closed when opening the Main one
+    If FMain.Visible And If FPopup.Visible Then FPopup.Close()
 
 End
 
 Public Sub Form_Open()
 
+    ' No need to start application if network does not work
     If Not Desktop.NetworkAvailable Then
         Message.Error(("Network must be functional for the application to work"))
         Quit
     Endif
+    ' Application can not function if tcpdump does not exist
     If Not System.Exist("tcpdump") Then
         Message.Error(("Tcpdump must be installed"))
         Quit
     Endif
-    If Not MCommon.IsRoot() Then
-        Message.Error(("Application must be launched under root account"))
-        Quit
-    Endif
+    ' Sniffing is possible only under root
+    ' If Not MCommon.IsRoot() Then
+    '     Message.Error(("Application must be launched under root account"))
+    '     Quit
+    ' Endif
 
 End
 
 Public Sub Form_Close()
 
+    ' In order to stop application in a proper way
+    ' we need to close all the windows and the sniffing proces
     If FPopup.Visible Then FPopup.Close()
     If proSniff <> Null Then
         If proSniff.State = proSniff.Running Then
@@ -193,6 +197,7 @@ End
 
 Public Sub Form_Show()
 
+    ' Popup window must be closed when opening the Main one
     If FPopup.Visible Then FPopup.Close()
 
 End
@@ -202,8 +207,9 @@ Public Sub tmrInterval_Timer()
     tmrInterval.Enabled = False
     lblServerIp.Text = ""
     strLastServer = ""
-    ClearGrid()
+    MCommon.ClearGrid()
     If bolRunning Then spnStatus.Visible = True
+    If FPopup.Visible Then FPopup.Close()
 
 End
 
@@ -224,6 +230,7 @@ Public Sub proSniff_Read()
     Line Input #proSniff, strLine
     arrFields = Split(strLine, " ")
     strProtoType = arrFields[6]
+    ' Need to check whether packet type and settings are equal
     If strProtoType <> "802.1Q" And strProtoType <> "IPv4" Then Return
     If strProtoType = "802.1Q" And Settings["VlansMode"] = False Then Return
     If strProtoType = "IPv4" And Settings["VlansMode"] = True Then Return
@@ -235,8 +242,10 @@ Public Sub proSniff_Read()
         strVlan = ""
     Endif
     strPort = Right(arrFields[intPortPos], 2)
+    ' We only get dhcp packets into account
     If strPort <> "67" Then Return
     strServerIp = Left(arrFields[intPortPos], -3)
+    ' We drop packets from legal dhcp servers
     If MCommon.IsDuplicate(strServerIp, UCase(arrFields[4])) Then Return
     spnStatus.Visible = False
     lblServerIp.Text = strServerIp
@@ -250,11 +259,14 @@ Public Sub proSniff_Read()
     grvFields[1, 1].Text = Str(Now)
     grvFields[2, 1].Text = intCaughtServers
     grvFields[3, 1].Text = strVlan
-    intArea = VlanExist(strVlan)
+    intArea = MCommon.VlanExist(strVlan)
     If intArea > -1 Then
         grvFields[4, 1].Text = MCommon.arrAreaNames[intArea]
     Endif
-    hFile = Open User.Home &/ LOGFILE For Write Append
+    ' Whenever new log info comes we need to
+    ' make backup of the current log file
+    MCommon.BackupLog()
+    hFile = Open MCommon.strLogFile For Write Append
     strLogLine &= grvFields[1, 1].Text & gb.tab
     strLogLine &= grvFields[0, 1].Text & gb.tab
     strLogLine &= strServerIp & gb.tab
@@ -271,17 +283,17 @@ Public Sub proSniff_Read()
     grvLogs[intRow, 4].Text = grvFields[3, 1].Text
     grvLogs[intRow, 5].Text = grvFields[4, 1].Text
     MCommon.ActivateRow(grvLogs)
-    ResizeLogs()
+    MCommon.ResizeLogs()
+    ' We must restart timer whenever new packet comes
     If tmrInterval.Enabled = True Then tmrInterval.Stop()
     tmrInterval.Delay = CInt(Settings["TimeInterval", 1]) * 1000 * 60
     tmrInterval.Enabled = True
     ' Show results in popup window
-    If FMain.Minimized Or If Not FMain.Visible Then
+    If Not FMain.Visible And If MCommon.DataExist() Then
         If Not FPopup.Visible Then
             FPopup.Show()
         Else
             FPopup.DataUpdate()
-            FPopup.tmrPopup.Restart()
         Endif
     Endif
 Catch
@@ -330,6 +342,7 @@ Public Sub slbInterval_Change()
             mnuSetInt10.Checked = True
 
     End Select
+    MCommon.ExportSettings()
     Settings["TimeInterval"] = slbInterval.Value
     tmrInterval.Delay = slbInterval.Value * 1000 * 60
 
@@ -337,6 +350,7 @@ End
 
 Public Sub Interval_Click()
 
+    MCommon.ExportSettings()
     slbInterval.Value = Val(Last.Tag)
     Settings["TimeInterval"] = slbInterval.Value
     tmrInterval.Delay = slbInterval.Value * 1000 * 60
@@ -347,8 +361,9 @@ Public Sub mnuLogClear_Click()
 
     If grvLogs.Rows.Count > 0 Then
         If Message.Question(("Sure you want to delete log table?"), ("Yes"), ("No")) = 1 Then
-            If Exist(User.Home &/ LOGFILE) Then
-                Try Kill User.Home &/ LOGFILE
+            MCommon.BackupLog()
+            If Exist(MCommon.strLogFile) Then
+                Try Kill MCommon.strLogFile
                 If Error Then
                     MCommon.ShowError()
                     Return
@@ -356,7 +371,7 @@ Public Sub mnuLogClear_Click()
             Endif
             grvLogs.Clear()
             grvLogs.Rows.Count = 0
-            ResizeLogs()
+            MCommon.ResizeLogs()
             tmrInterval_Timer()
         Endif
     Endif
@@ -426,7 +441,7 @@ Public Sub mnuSnifferAction_Click()
         strLastServer = ""
         lblServerIp.Text = ""
         spnStatus.Visible = False
-        ClearGrid()
+        MCommon.ClearGrid()
     Else
         Try proSniff = Shell "tcpdump -e -n -i any port 67" For Input As "proSniff"
         If Error Then
@@ -474,6 +489,7 @@ End
 Public Sub mnuSettingsAutostart_Click()
 
     tlbAuto.Value = Not Settings["AutoStart"]
+    MCommon.ExportSettings()
     Settings["AutoStart"] = tlbAuto.Value
     mnuSettingsAutostart.Checked = tlbAuto.Value
 
@@ -482,6 +498,7 @@ End
 Public Sub mnuSettingsVlans_Click()
 
     tlbVlan.Value = Not Settings["VlansMode"]
+    MCommon.ExportSettings()
     Settings["VlansMode"] = tlbVlan.Value
     mnuSettingsVlans.Checked = tlbVlan.Value
 
@@ -493,96 +510,42 @@ Public Sub mnuSettingsAreas_Click()
 
 End
 
-Public Function VlanExist(Vlan As String) As Integer
+Public Sub mnuFileExit_Click()
 
-    Dim i As Integer
-    Dim arrVlans As New String[]
-
-    For i = 0 To MCommon.arrAreaVlans.Max
-        arrVlans = Split(MCommon.arrAreaVlans[i], ",")
-        If arrVlans.Find(Vlan) > -1 Then Return i
-    Next
-    Return -1
+    Me.Close()
 
 End
 
-Public Sub GetLogs()
+Public Sub mnuHelpAbout_Click()
 
-    Dim hFile As File
-    Dim strLine As String
-    Dim arrLine As New String[]
-    Dim intRow As Integer
-    Dim i As Byte
-
-    If Exist(User.Home &/ LOGFILE) Then
-        Try hFile = Open User.Home &/ LOGFILE For Input
-        If Error Then
-            MCommon.ShowError()
-            Return
-        Endif
-        Do Until Eof(hFile)
-            Line Input #hFile, strLine
-            arrLine = Split(strLine, gb.Tab)
-            Inc grvLogs.Rows.Count
-            grvLogs[intRow, 0].Text = Trim(Str(intRow + 1))
-            For i = 1 To 5
-                grvLogs[intRow, i].Text = Trim(arrLine[i - 1])
-            Next
-            Inc intRow
-        Loop
-        MCommon.ActivateRow(grvLogs)
-        ResizeLogs()
-    Endif
+    FAbout.ShowModal()
 
 End
 
-Public Sub ResizeLogs()
+Public Sub mnuTrayExit_Click()
 
-    Dim i As Byte
-
-    With grvLogs
-        For i = 0 To 5
-            .Columns[i].Alignment = Align.Center
-        Next
-        .Columns[0].Width = .ClientWidth * 9 / 100
-        .Columns[1].Width = .ClientWidth * 22 / 100
-        .Columns[2].Width = .ClientWidth * 20 / 100
-        .Columns[3].Width = .ClientWidth * 18 / 100
-        .Columns[4].Width = .ClientWidth * 8 / 100
-        .Columns[5].Width = .ClientWidth * 23 / 100 + 4
-    End With
+    Me.Close()
 
 End
 
-Public Sub ClearGrid()
+Public Sub mnuTrayOpen_Click()
 
-    Dim i As Byte
-
-    For i = 0 To 4
-        grvFields[i, 1].Clear()
-    Next
-    grvFields.Refresh()
+    Me.Show()
+    triMain.Hide()
 
 End
 
-Public Sub GetLegal()
+Public Sub tlbTray_Click()
 
-    Dim i As Integer
+    Me.Hide()
+    triMain.Show()
+    If MCommon.DataExist() Then FPopup.Show()
 
-    MCommon.arrLegalMAC.Clear()
-    MCommon.arrLegalIP.Clear()
-    If Settings["LegalServers/MACS"] <> Null And If Settings["LegalServers/IPS"] <> Null Then
-        grvLegalIP.Clear()
-        MCommon.arrLegalMAC = Split(Settings["LegalServers/MACS"], " ")
-        MCommon.arrLegalIP = Split(Settings["LegalServers/IPS"], " ")
-        For i = 0 To MCommon.arrLegalMAC.Max
-            Inc grvLegalIP.Rows.Count
-            grvLegalIP[i, 0].Text = MCommon.arrLegalMAC[i]
-            grvLegalIP[i, 1].Text = MCommon.arrLegalIP[i]
-        Next
-        MCommon.ActivateRow(grvLegalIP)
-        MCommon.ResizeLegal()
-    Endif
+End
+
+Public Sub triMain_Click()
+
+    mnuTrayOpen_Click()
 
 End
 
@@ -661,43 +624,5 @@ End
 Public Sub tlbClear_Click()
 
     mnuServerEmpty_Click()
-
-End
-
-Public Sub mnuFileExit_Click()
-
-    Me.Close()
-
-End
-
-Public Sub mnuHelpAbout_Click()
-
-    FAbout.ShowModal()
-
-End
-
-Public Sub mnuTrayExit_Click()
-
-    Me.Close()
-
-End
-
-Public Sub mnuTrayOpen_Click()
-
-    Me.Show()
-    triMain.Hide()
-
-End
-
-Public Sub tlbTray_Click()
-
-    Me.Hide()
-    triMain.Show()
-
-End
-
-Public Sub triMain_Click()
-
-    mnuTrayOpen_Click()
 
 End
