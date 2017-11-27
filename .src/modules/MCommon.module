@@ -3,8 +3,7 @@
 ' Space between controls
 Public Const MARGIN As Byte = 6
 Public Const HELPFILE As String = "help/index.html"
-Public Const LOGFILE As String = ".rogue.log"
-Public strLogFile As String = User.Home &/ LOGFILE
+Public strLogFile As String = User.Home &/ Application.Name & ".log"
 Public strBackLog As String = strLogFile & ".bak"
 Public arrLegalIP As New String[]
 Public arrLegalMAC As New String[]
@@ -65,7 +64,7 @@ Public Sub SaveLegal()
             arrLegalIP.Add(.grvLegalIP[i, 1].Text)
         Next
     End With
-    ExportSettings()
+    Backup()
     Settings["LegalServers/MACS"] = arrLegalMAC.Join(" ")
     Settings["LegalServers/IPS"] = arrLegalIP.Join(" ")
 
@@ -90,32 +89,28 @@ Public Function IsRoot() As Boolean
 
 End
 
-Public Sub ExportSettings()
+Public Sub Backup(Optional bolMakeLogBackup As Boolean = False)
 
-    If Exist(strGlobalConfig) Then
-        If Exist(strBackupConfig) Then
-            Try Kill strBackupConfig
-            If Error Then
-                ShowError()
-                Return
-            Endif
-        Endif
-        Copy strGlobalConfig To strBackupConfig
+    Dim strSrcFile As String
+    Dim strDstFile As String
+
+    If bolMakeLogBackup Then
+        strSrcFile = strLogFile
+        strDstFile = strBackLog
+    Else
+        strSrcFile = strGlobalConfig
+        strDstFile = strBackupConfig
     Endif
 
-End
-
-Public Sub BackupLog()
-
-    If Exist(strLogFile) Then
-        If Exist(strBackLog) Then
-            Try Kill strBackLog
+    If Exist(strSrcFile) Then
+        If Exist(strDstFile) Then
+            Try Kill strDstFile
             If Error Then
                 ShowError()
                 Return
             Endif
         Endif
-        Copy strLogFile To strBackLog
+        Copy strSrcFile To strDstFile
     Endif
 
 End
@@ -218,7 +213,7 @@ Public Function DataExist() As Boolean
     Dim i As Byte
     Dim bolResult As Boolean = True
 
-    For i = 0 To 4
+    For i = 0 To 2
         bolResult = bolResult And FMain.grvFields[i, 1].Text <> ""
     Next
     Return bolResult
@@ -248,17 +243,17 @@ Public Function AreaExists(Area As String) As Boolean
 
 End
 
-Public Sub ResizeColumns()
+Public Sub ResizeColumns(grvGrid As GridView)
 
     Dim i As Byte
 
-    With FAreas.grvAreas
+    With grvGrid
         For i = 0 To 2
             .Columns[i].Alignment = Align.Center
         Next
         .Columns[0].Width = .ClientWidth * 10 / 100
-        .Columns[1].Width = .ClientWidth * 45 / 100
-        .Columns[2].Width = .ClientWidth * 45 / 100
+        .Columns[1].Width = .ClientWidth * 55 / 100
+        .Columns[2].Width = .ClientWidth * 35 / 100
     End With
 
 End

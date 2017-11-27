@@ -171,10 +171,10 @@ Public Sub Form_Open()
         Quit
     Endif
     ' Sniffing is possible only under root
-    ' If Not MCommon.IsRoot() Then
-    '     Message.Error(("Application must be launched under root account"))
-    '     Quit
-    ' Endif
+    If Not MCommon.IsRoot() Then
+        Message.Error(("Application must be launched under root account"))
+        Quit
+    Endif
 
 End
 
@@ -265,7 +265,7 @@ Public Sub proSniff_Read()
     Endif
     ' Whenever new log info comes we need to
     ' make backup of the current log file
-    MCommon.BackupLog()
+    MCommon.Backup(True)
     hFile = Open MCommon.strLogFile For Write Append
     strLogLine &= grvFields[1, 1].Text & gb.tab
     strLogLine &= grvFields[0, 1].Text & gb.tab
@@ -293,7 +293,7 @@ Public Sub proSniff_Read()
         If Not FPopup.Visible Then
             FPopup.Show()
         Else
-            FPopup.DataUpdate()
+            MCommon.DataUpdate()
         Endif
     Endif
 Catch
@@ -330,19 +330,8 @@ Public Sub slbInterval_Change()
             mnuSetInt4.Checked = True
         Case 5
             mnuSetInt5.Checked = True
-        Case 6
-            mnuSetInt6.Checked = True
-        Case 7
-            mnuSetInt7.Checked = True
-        Case 8
-            mnuSetInt8.Checked = True
-        Case 9
-            mnuSetInt9.Checked = True
-        Case 10
-            mnuSetInt10.Checked = True
-
     End Select
-    MCommon.ExportSettings()
+    MCommon.Backup()
     Settings["TimeInterval"] = slbInterval.Value
     tmrInterval.Delay = slbInterval.Value * 1000 * 60
 
@@ -350,7 +339,7 @@ End
 
 Public Sub Interval_Click()
 
-    MCommon.ExportSettings()
+    MCommon.Backup()
     slbInterval.Value = Val(Last.Tag)
     Settings["TimeInterval"] = slbInterval.Value
     tmrInterval.Delay = slbInterval.Value * 1000 * 60
@@ -361,7 +350,7 @@ Public Sub mnuLogClear_Click()
 
     If grvLogs.Rows.Count > 0 Then
         If Message.Question(("Sure you want to delete log table?"), ("Yes"), ("No")) = 1 Then
-            MCommon.BackupLog()
+            MCommon.Backup(True)
             If Exist(MCommon.strLogFile) Then
                 Try Kill MCommon.strLogFile
                 If Error Then
@@ -489,7 +478,7 @@ End
 Public Sub mnuSettingsAutostart_Click()
 
     tlbAuto.Value = Not Settings["AutoStart"]
-    MCommon.ExportSettings()
+    MCommon.Backup()
     Settings["AutoStart"] = tlbAuto.Value
     mnuSettingsAutostart.Checked = tlbAuto.Value
 
@@ -498,7 +487,7 @@ End
 Public Sub mnuSettingsVlans_Click()
 
     tlbVlan.Value = Not Settings["VlansMode"]
-    MCommon.ExportSettings()
+    MCommon.Backup()
     Settings["VlansMode"] = tlbVlan.Value
     mnuSettingsVlans.Checked = tlbVlan.Value
 

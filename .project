@@ -3,7 +3,7 @@
 Title=Rogue DHCP
 Startup=MCommon
 Icon=icons/96.png
-Version=0.1.98
+Version=0.2.2
 Component=gb.image
 Component=gb.gui.qt
 Component=gb.form

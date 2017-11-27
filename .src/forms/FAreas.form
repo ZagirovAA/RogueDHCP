@@ -1,104 +1,112 @@
 # Gambas Form File 3.0
 
 { Form Form
-  Move(0,0,592,400)
+  Move(0,0,640,400)
   #Scaled = False
   Text = ("Areas database")
   Icon = Picture["icons/24.png"]
   Resizable = False
-  { Panel1 Panel
-    Move(8,8,448,384)
-    Border = Border.Plain
-    { grvAreas GridView
-      Move(16,88,416,280)
-      Mouse = Mouse.Pointing
-      Mode = Select.Single
-      Header = GridView.Horizontal
-      ScrollBar = Scroll.Vertical
-      Resizable = False
-    }
-    { pnlVlans Panel
-      Move(16,16,416,56)
-      Enabled = False
-      { Label1 Label
-        Move(0,0,220,24)
-        Text = ("Areas:")
-      }
-      { cmbVlan ComboBox
-        Move(232,24,80,32)
-        Mouse = Mouse.Pointing
-        ReadOnly = True
-      }
-      { Label2 Label
-        Move(236,0,72,24)
-        Text = ("Vlans:")
-      }
-      { tlbAdd ToolButton
-        Move(320,24,32,32)
-        Mouse = Mouse.Pointing
-        ToolTip = ("Add VLAN")
-        Picture = Picture["icon:/16/add"]
-        Border = True
-      }
-      { tlbDelete ToolButton
-        Move(352,24,32,32)
-        Mouse = Mouse.Pointing
-        ToolTip = ("Delete VLAN")
-        Picture = Picture["icon:/16/delete"]
-        Border = True
-      }
-      { tlbApply ToolButton
-        Move(384,24,32,32)
-        Mouse = Mouse.Pointing
-        ToolTip = ("Apply changes")
-        Picture = Picture["icon:/16/apply"]
-        Border = True
-      }
-      { cmbArea ComboBox
-        Move(0,24,224,32)
-        Mouse = Mouse.Pointing
-        ReadOnly = True
-        Sorted = True
-      }
-    }
-  }
   { btnAdd Button
-    Move(464,8,120,32)
+    Move(512,8,120,32)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Add")
     Picture = Picture["icon:/16/add"]
   }
   { btnEdit Button
-    Move(464,48,120,32)
+    Move(512,48,120,32)
     Enabled = False
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Edit")
     Picture = Picture["icon:/16/edit"]
   }
   { btnDelete Button
-    Move(464,88,120,32)
+    Move(512,88,120,32)
     Enabled = False
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Delete")
     Picture = Picture["icon:/16/delete"]
   }
   { btnClear Button
-    Move(464,128,120,32)
+    Move(512,128,120,32)
     Enabled = False
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Clear")
     Picture = Picture["icon:/16/clear"]
   }
   { btnCancel Button
-    Move(464,360,120,32)
+    Move(512,360,120,32)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Cancel")
     Picture = Picture["icon:/16/close"]
   }
   { btnSave Button
-    Move(464,320,120,32)
+    Move(512,320,120,32)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Save")
     Picture = Picture["icon:/16/save"]
+  }
+  { pnlVlans Panel
+    Move(8,8,496,72)
+    Enabled = False
+    Border = Border.Plain
+    { Label1 Label
+      Move(12,8,272,24)
+      Font = Font["10"]
+      Text = ("Areas:")
+    }
+    { cmbVlan ComboBox
+      Move(312,32,80,32)
+      Font = Font["10"]
+      Mouse = Mouse.Pointing
+      ReadOnly = True
+    }
+    { Label2 Label
+      Move(316,8,72,24)
+      Font = Font["10"]
+      Text = ("Vlans:")
+    }
+    { tlbAdd ToolButton
+      Move(392,32,32,32)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Add VLAN")
+      Picture = Picture["icon:/16/add"]
+      Border = True
+    }
+    { tlbDelete ToolButton
+      Move(424,32,32,32)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Delete VLAN")
+      Picture = Picture["icon:/16/delete"]
+      Border = True
+    }
+    { tlbApply ToolButton
+      Move(456,32,32,32)
+      Mouse = Mouse.Pointing
+      ToolTip = ("Apply changes")
+      Picture = Picture["icon:/16/apply"]
+      Border = True
+    }
+    { cmbArea ComboBox
+      Move(8,32,296,32)
+      Font = Font["10"]
+      Mouse = Mouse.Pointing
+      ReadOnly = True
+      Sorted = True
+    }
+  }
+  { grvAreas GridView
+    Move(8,88,496,304)
+    Font = Font["10"]
+    Mouse = Mouse.Pointing
+    Mode = Select.Single
+    Header = GridView.Horizontal
+    ScrollBar = Scroll.Vertical
+    Resizable = False
   }
 }

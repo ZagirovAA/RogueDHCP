@@ -50,6 +50,7 @@
       Background = Color.White
       { txbUrl TextBox
         Move(7,0,497,28)
+        Font = Font["10"]
         Background = Color.White
         ReadOnly = True
         Border = False

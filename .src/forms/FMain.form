@@ -123,41 +123,6 @@
         Tag = "5"
         Shortcut = "Ctrl+5"
       }
-      { mnuSetInt6 Menu Interval
-        Name = "mnuSetInt6"
-        Text = ("6 minutes")
-        Radio = True
-        Tag = "6"
-        Shortcut = "Ctrl+6"
-      }
-      { mnuSetInt7 Menu Interval
-        Name = "mnuSetInt7"
-        Text = ("7 minutes")
-        Radio = True
-        Tag = "7"
-        Shortcut = "Ctrl+7"
-      }
-      { mnuSetInt8 Menu Interval
-        Name = "mnuSetInt8"
-        Text = ("8 minutes")
-        Radio = True
-        Tag = "8"
-        Shortcut = "Ctrl+8"
-      }
-      { mnuSetInt9 Menu Interval
-        Name = "mnuSetInt9"
-        Text = ("9 minutes")
-        Radio = True
-        Tag = "9"
-        Shortcut = "Ctrl+9"
-      }
-      { mnuSetInt10 Menu Interval
-        Name = "mnuSetInt10"
-        Text = ("10 minutes")
-        Radio = True
-        Tag = "10"
-        Shortcut = "Ctrl+0"
-      }
     }
     { mnuSettingsSep3 Menu
     }
@@ -191,12 +156,14 @@
   }
   { grvFields GridView
     Move(630,84,294,140)
+    Font = Font["10"]
     Header = GridView.Horizontal
     ScrollBar = Scroll.None
     Resizable = False
   }
   { grvLegalIP GridView
     Move(7,252,280,232)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Mode = Select.Single
     Header = GridView.Horizontal
@@ -206,6 +173,7 @@
   }
   { grvLogs GridView
     Move(294,252,632,232)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     PopupMenu = "mnuCLog"
     Mode = Select.Single
@@ -286,24 +254,24 @@
       Move(406,6,21,36)
     }
     { slbInterval SliderBox
-      Move(427,10,280,28)
+      Move(427,8,192,32)
       Mouse = Mouse.Pointing
       ToolTip = ("Interval without broadcasting")
       MinValue = 1
-      MaxValue = 10
+      MaxValue = 5
       Value = 1
     }
     { Separator6 Separator
-      Move(707,6,21,36)
+      Move(619,6,21,36)
     }
     { tlbAbout ToolButton
-      Move(784,6,36,36)
+      Move(696,6,36,36)
       Mouse = Mouse.Pointing
       ToolTip = ("About")
       Picture = Picture["images/about.png"]
     }
     { tlbExit ToolButton
-      Move(868,6,36,36)
+      Move(780,6,36,36)
       Mouse = Mouse.Pointing
       ToolTip = ("Exit")
       Picture = Picture["images/exit.png"]
@@ -321,16 +289,16 @@
       Move(238,6,21,36)
     }
     { Separator9 Separator
-      Move(763,6,21,36)
+      Move(675,6,21,36)
     }
     { tlbAreas ToolButton
-      Move(728,6,36,36)
+      Move(640,6,36,36)
       Mouse = Mouse.Pointing
       ToolTip = ("Areas database")
       Picture = Picture["images/area.png"]
     }
     { tlbTray ToolButton
-      Move(826,6,36,36)
+      Move(738,6,36,36)
       Mouse = Mouse.Pointing
       ToolTip = ("Hide to tray")
       Picture = Picture["images/tray.png"]
@@ -338,6 +306,7 @@
   }
   { lblFields Label
     Move(630,63,294,21)
+    Font = Font["10"]
     Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Server data")
@@ -345,6 +314,7 @@
   }
   { lblLegalsTable Label
     Move(7,231,280,21)
+    Font = Font["10"]
     Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Legal servers")
@@ -352,6 +322,7 @@
   }
   { lblLogTable Label
     Move(294,231,632,21)
+    Font = Font["10"]
     Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Table of logs")
@@ -359,6 +330,7 @@
   }
   { lblRogueIP Label
     Move(7,63,616,21)
+    Font = Font["10"]
     Background = &H3F81B8&
     Foreground = Color.White
     Text = ("Server address")

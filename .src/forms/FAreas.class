@@ -6,14 +6,14 @@ Public Sub _new()
         .Columns.Count = 3
         .Columns[0].Text = "N"
         .Columns[1].Text = ("Areas")
-        .Columns[2].Text = "VLAN"
+        .Columns[2].Text = ("Vlans")
     End With
 
 End
 
 Public Sub Form_Show()
 
-    MCommon.ResizeColumns()
+    MCommon.ResizeColumns(grvAreas)
 
 End
 
@@ -28,7 +28,7 @@ Public Sub Form_Open()
         MCommon.arrAreaNames = Split(Settings["Areas/Names"], ":")
         MCommon.arrAreaVlans = Split(Settings["Areas/Vlans"], ":")
         For i = 0 To MCommon.arrAreaNames.Max
-            MCommon.ResizeColumns()
+            MCommon.ResizeColumns(grvAreas)
             Inc grvAreas.Rows.Count
             grvAreas[i, 0].Text = Str(i + 1)
             grvAreas[i, 1].Text = MCommon.arrAreaNames[i]
@@ -69,7 +69,7 @@ Public Sub btnAdd_Click()
     grvAreas[grvAreas.Rows.Max, 2].Text = ""
     cmbArea.Add(strArea)
     MCommon.ActivateRow(grvAreas)
-    MCommon.ResizeColumns()
+    MCommon.ResizeColumns(grvAreas)
 
 End
 
@@ -159,7 +159,7 @@ Public Sub btnEdit_Click()
             Return
         Endif
         grvAreas[grvAreas.Row, 1].Text = strNewArea
-        MCommon.ResizeColumns()
+        MCommon.ResizeColumns(grvAreas)
     Endif
 
 End
@@ -192,7 +192,7 @@ Public Sub btnSave_Click()
         MCommon.arrAreaNames.Add(grvAreas[i, 1].Text)
         MCommon.arrAreaVlans.Add(grvAreas[i, 2].Text)
     Next
-    MCommon.ExportSettings()
+    MCommon.Backup()
     Settings["Areas/Names"] = MCommon.arrAreaNames.Join(":")
     Settings["Areas/Vlans"] = MCommon.arrAreaVlans.Join(":")
 

@@ -10,20 +10,24 @@
     Border = Border.Plain
     { Label1 Label
       Move(16,20,96,24)
+      Font = Font["10"]
       Text = ("IP address:")
       Alignment = Align.Right
     }
     { Label2 Label
       Move(16,60,96,24)
+      Font = Font["10"]
       Text = ("MAC address:")
       Alignment = Align.Right
     }
     { vlbIPAddress ValueBox
       Move(120,16,184,32)
+      Font = Font["10"]
       Type = ValueBox.IPAddress
     }
     { msbMACAddress MaskBox
       Move(120,56,144,32)
+      Font = Font["10"]
       Alignment = Align.Right
       Mask = "[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]"
     }
@@ -36,12 +40,14 @@
   }
   { btnAction Button
     Move(8,120,120,32)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Add")
     Picture = Picture["icon:/16/add"]
   }
   { btnCancel Button
     Move(208,120,120,32)
+    Font = Font["10"]
     Mouse = Mouse.Pointing
     Text = ("Cancel")
     Picture = Picture["icon:/16/close"]

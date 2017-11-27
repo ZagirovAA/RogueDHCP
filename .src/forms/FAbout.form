@@ -17,15 +17,17 @@
     }
     { Label1 Label
       Move(98,14,296,24)
-      Font = Font["Bold"]
+      Font = Font["Bold,11"]
       Text = ("Rogue DHCP")
     }
     { Label2 Label
       Move(96,36,296,24)
+      Font = Font["11"]
       Text = ("Sniffer of non-leagal dhcp servers")
     }
     { Label3 Label
       Move(96,58,296,24)
+      Font = Font["11"]
       Text = ("Zagirov Abdul Askerovich (С) 2015 - 2017")
     }
   }
