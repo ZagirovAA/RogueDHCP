@@ -1,0 +1,451 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  #project.pot (roguedhcp 3.10.0)  #-#-#-#-#\n"
+"Project-Id-Version: roguedhcp 3.10.0\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FAbout.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FAreas.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FHelp.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FMain.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FPopup.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  FServer.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  MCommon.pot ($(PACKAGE) $(VERSION))  #-#-#-#-#\n"
+"Project-Id-Version: $(PACKAGE) $(VERSION)\n"
+"POT-Creation-Date: 2017-11-27 08:35 UTC\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .project:1 FAbout.form:30
+msgid "Rogue DHCP"
+msgstr ""
+
+#: .project:2 FMain.form:78
+msgid "Rogue DHCP sniffer"
+msgstr ""
+
+#: FAbout.form:12 FMain.form:242
+msgid "About"
+msgstr ""
+
+#: FAbout.form:36
+msgid "Sniffer of non-leagal dhcp servers"
+msgstr ""
+
+#: FAbout.form:42
+msgid "Zagirov Abdul Askerovich (С) 2015 - 2017"
+msgstr ""
+
+#: FAreas.form:22 FMain.form:233
+msgid "Areas database"
+msgstr ""
+
+#: FAreas.form:30 FMain.form:119 FServer.form:61
+msgid "Add"
+msgstr ""
+
+#: FAreas.form:39 FMain.form:124
+msgid "Edit"
+msgstr ""
+
+#: FAreas.form:48 FMain.form:129
+msgid "Delete"
+msgstr ""
+
+#: FAreas.form:57 FMain.form:137
+msgid "Clear"
+msgstr ""
+
+#: FAreas.form:65 FServer.form:69
+msgid "Cancel"
+msgstr ""
+
+#: FAreas.form:73
+msgid "Save"
+msgstr ""
+
+#: FAreas.form:85
+msgid "Areas:"
+msgstr ""
+
+#: FAreas.form:98
+msgid "Vlans:"
+msgstr ""
+
+#: FAreas.form:104
+msgid "Add VLAN"
+msgstr ""
+
+#: FAreas.form:112
+msgid "Delete VLAN"
+msgstr ""
+
+#: FAreas.form:120
+msgid "Apply changes"
+msgstr ""
+
+#: FAreas.class:8
+msgid "Areas"
+msgstr ""
+
+#: FAreas.class:9
+msgid "Vlans"
+msgstr ""
+
+#: FAreas.class:56
+msgid "Enter area:"
+msgstr ""
+
+#: FAreas.class:56
+msgid "Add area"
+msgstr ""
+
+#: FAreas.class:59
+msgid "You didn't enter name of the area"
+msgstr ""
+
+#: FAreas.class:63
+msgid "Area already exists"
+msgstr ""
+
+#: FAreas.class:92
+msgid "Enter VLAN:"
+msgstr ""
+
+#: FAreas.class:95
+msgid "You didn't enter VLAN number"
+msgstr ""
+
+#: FAreas.class:99
+msgid "Digital value needs to be entered"
+msgstr ""
+
+#: FAreas.class:103
+msgid "VLAN already exists"
+msgstr ""
+
+#: FAreas.class:107
+msgid "VLAN number must be between 1 and 4094"
+msgstr ""
+
+#: FAreas.class:134
+msgid "Sure you want to delete all the data?"
+msgstr ""
+
+#: FAreas.class:134 FMain.class:352
+msgid "Yes"
+msgstr ""
+
+#: FAreas.class:134 FMain.class:352
+msgid "No"
+msgstr ""
+
+#: FAreas.class:151
+msgid "Edit area"
+msgstr ""
+
+#: FAreas.class:154
+msgid "Name of the area was not changed"
+msgstr ""
+
+#: FHelp.form:19
+msgid "Help system - Rogue DHCP"
+msgstr ""
+
+#: FHelp.form:37
+msgid "Refresh - F5"
+msgstr ""
+
+#: FHelp.form:48
+msgid "Home - Home"
+msgstr ""
+
+#: FHelp.form:59
+msgid "Forward - Right"
+msgstr ""
+
+#: FHelp.form:66
+msgid "Backward - Left"
+msgstr ""
+
+#: FMain.form:83
+msgid "Tray"
+msgstr ""
+
+#: FMain.form:87
+msgid "Open"
+msgstr ""
+
+#: FMain.form:92
+msgid "Exit"
+msgstr ""
+
+#: FMain.form:98
+msgid "File"
+msgstr ""
+
+#: FMain.form:107
+msgid "Sniffer"
+msgstr ""
+
+#: FMain.form:110
+msgid "Start"
+msgstr ""
+
+#: FMain.form:116
+msgid "Server"
+msgstr ""
+
+#: FMain.form:143
+msgid "Log"
+msgstr ""
+
+#: FMain.form:154
+msgid "Copy IP address"
+msgstr ""
+
+#: FMain.form:159
+msgid "Copy MAC address"
+msgstr ""
+
+#: FMain.form:165
+msgid "Settings"
+msgstr ""
+
+#: FMain.form:168
+msgid "Autostart"
+msgstr ""
+
+#: FMain.form:177
+msgid "VLAN mode"
+msgstr ""
+
+#: FMain.form:186
+msgid "Interval"
+msgstr ""
+
+#: FMain.form:190
+msgid "1 minute"
+msgstr ""
+
+#: FMain.form:198
+msgid "2 minutes"
+msgstr ""
+
+#: FMain.form:206
+msgid "3 minutes"
+msgstr ""
+
+#: FMain.form:214
+msgid "4 minutes"
+msgstr ""
+
+#: FMain.form:222
+msgid "5 minutes"
+msgstr ""
+
+#: FMain.form:239
+msgid "Help"
+msgstr ""
+
+#: FMain.form:256
+msgid "CLog"
+msgstr ""
+
+#: FMain.form:320
+msgid "Sniffing"
+msgstr ""
+
+#: FMain.form:331
+msgid "Clear log"
+msgstr ""
+
+#: FMain.form:342
+msgid "Sniffing autostart"
+msgstr ""
+
+#: FMain.form:362
+msgid "Delete server"
+msgstr ""
+
+#: FMain.form:369
+msgid "Add server"
+msgstr ""
+
+#: FMain.form:376
+msgid "Edit server"
+msgstr ""
+
+#: FMain.form:387
+msgid "Interval without broadcasting"
+msgstr ""
+
+#: FMain.form:418
+msgid "Clear servers"
+msgstr ""
+
+#: FMain.form:440
+msgid "Hide to tray"
+msgstr ""
+
+#: FMain.form:450 FPopup.form:29
+msgid "Server data"
+msgstr ""
+
+#: FMain.form:459
+msgid "Legal servers"
+msgstr ""
+
+#: FMain.form:468
+msgid "Table of logs"
+msgstr ""
+
+#: FMain.form:477
+msgid "Server address"
+msgstr ""
+
+#: FMain.class:26
+msgid "Field"
+msgstr ""
+
+#: FMain.class:27
+msgid "Value"
+msgstr ""
+
+#: FMain.class:30 FPopup.class:16
+msgid "MAC address"
+msgstr ""
+
+#: FMain.class:31 FPopup.class:17
+msgid "Time"
+msgstr ""
+
+#: FMain.class:32 FPopup.class:18
+msgid "Quantity"
+msgstr ""
+
+#: FMain.class:34 FPopup.class:20
+msgid "Area"
+msgstr ""
+
+#: FMain.class:41
+msgid "IP address"
+msgstr ""
+
+#: FMain.class:82
+msgid "Stop"
+msgstr ""
+
+#: FMain.class:165
+msgid "Network must be functional for the application to work"
+msgstr ""
+
+#: FMain.class:170
+msgid "Tcpdump must be installed"
+msgstr ""
+
+#: FMain.class:175
+msgid "Application must be launched under root account"
+msgstr ""
+
+#: FMain.class:352
+msgid "Sure you want to delete log table?"
+msgstr ""
+
+#: FMain.class:412
+msgid "Sure you want to delete all the leagal servers?"
+msgstr ""
+
+#: FMain.class:453
+msgid "IP address was successfully put into clipboard"
+msgstr ""
+
+#: FMain.class:462
+msgid "MAC address was successfully put into clipboard"
+msgstr ""
+
+#: FMain.class:473
+msgid "Help file was not found"
+msgstr ""
+
+#: FServer.form:25
+msgid "IP address:"
+msgstr ""
+
+#: FServer.form:32
+msgid "MAC address:"
+msgstr ""
+
+#: FServer.form:52
+msgid "Get MAC of IP"
+msgstr ""
+
+#: FServer.class:20
+msgid "Could not get mac address"
+msgstr ""
+
+#: FServer.class:49
+msgid "Fields need to be filled"
+msgstr ""
+
+#: FServer.class:53
+msgid "Incorrect IP address format"
+msgstr ""
+
+#: FServer.class:57
+msgid "Incorrect MAC address format"
+msgstr ""
+
+#: FServer.class:61
+msgid "Identical record already exists"
+msgstr ""
+
+#: MCommon.module:77
+msgid "Error code:"
+msgstr ""
+
+#: MCommon.module:78
+msgid "Error text:"
+msgstr ""
+
+#: MCommon.module:79
+msgid "Error place:"
+msgstr ""
+
+#: MCommon.module:81
+msgid "Error"
+msgstr ""
