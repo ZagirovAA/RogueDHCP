@@ -45,9 +45,10 @@ Path="roguedhcp.gambas"
 
 [OpenFile]
 File[1]=".src/forms/FMain.form"
-Active=2
-Count=2
+Active=3
+Count=3
 File[2]=".src/forms/FMain.class:0.173"
+File[3]=".src/modules/MCommon.module:4.16"
 
 [Watches]
 Count=0
